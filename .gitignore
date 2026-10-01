@@ -3,6 +3,9 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# trash file
+trash.py
+
 # C extensions
 *.so
 
