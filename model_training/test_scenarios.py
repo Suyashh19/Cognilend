@@ -6,8 +6,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
-import loan_engine as le
-from train import make_model
+import model_training.loan_engine as le
+from model_training.train import make_model
 
 GOOD = dict(Loan_ID='T', Age=35, Gender='Male', Marital_Status='Married', Dependents='1',
             Employment_Type='Salaried', Work_Experience=10, Monthly_Income=150_000, Coapplicant_Income=None,
