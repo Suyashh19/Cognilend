@@ -1,0 +1,172 @@
+{
+  "yearly_rate_for_emi": {
+    "Home": 0.085,
+    "Vehicle": 0.095,
+    "Personal": 0.115,
+    "Business": 0.13
+  },
+  "caps": {
+    "total_income": [
+      14000.0,
+      359257.99999999744
+    ],
+    "foir": [
+      0.0,
+      1.5
+    ],
+    "collateral_coverage": [
+      0.0,
+      5.0
+    ],
+    "loan_to_income": [
+      0.0,
+      5.6206955413894395
+    ]
+  },
+  "must_keep": [
+    "cibil_score",
+    "is_new_to_credit",
+    "foir",
+    "collateral_coverage",
+    "age_at_maturity",
+    "total_income",
+    "work_experience",
+    "emp_senp",
+    "emp_sep",
+    "loan_type_business",
+    "loan_type_home",
+    "loan_type_vehicle"
+  ],
+  "dropped_features": {
+    "monthly_income": "A: part of total_income",
+    "coapplicant_income": "A: part of total_income",
+    "existing_emi": "A: part of foir",
+    "proposed_emi": "A: part of foir",
+    "collateral_value": "A: replaced by collateral_coverage (does not depend on loan size)",
+    "loan_amount": "A: replaced by loan_to_income (does not depend on loan size)",
+    "age": "B: |rho| = 0.937 with work_experience, lower MI (0.0387 vs 0.0677)",
+    "is_secured": "B: |rho| = 0.879 with collateral_coverage, lower MI (0.0001 vs 0.0071)",
+    "dependents": "C: low relevance (MI = 0.0025, PI = 0.0002)",
+    "has_coapplicant": "C: low relevance (MI = 0.0009, PI = -0.0006)",
+    "property_area": "C: low relevance (MI = 0.0029, PI = 0.0002)"
+  },
+  "selected_features": [
+    "work_experience",
+    "total_income",
+    "cibil_score",
+    "is_new_to_credit",
+    "loan_tenure_months",
+    "foir",
+    "collateral_coverage",
+    "loan_to_income",
+    "age_at_maturity",
+    "emp_senp",
+    "emp_sep",
+    "loan_type_business",
+    "loan_type_home",
+    "loan_type_vehicle"
+  ],
+  "group_permutation_importance": {
+    "employment_type": 0.004,
+    "loan_type": 0.0011
+  },
+  "cv_accuracy_all_candidates": 0.8801,
+  "cv_accuracy_selected": 0.8794,
+  "pca_components_for_90_percent": 5,
+  "features": {
+    "work_experience": {
+      "source": "phase 3 semi_preprocessed_dataset (already transformed)"
+    },
+    "total_income": {
+      "source": "built in phase 4",
+      "cap": [
+        14000.0,
+        359257.99999999744
+      ],
+      "log1p": true,
+      "skew_before": 1.86,
+      "skew_after": 0.04,
+      "mean": 11.12749436339771,
+      "std": 0.6872060231383351
+    },
+    "cibil_score": {
+      "source": "phase 3 semi_preprocessed_dataset (already transformed)"
+    },
+    "is_new_to_credit": {
+      "source": "phase 3 semi_preprocessed_dataset (already transformed)"
+    },
+    "loan_tenure_months": {
+      "source": "phase 3 semi_preprocessed_dataset (already transformed)"
+    },
+    "foir": {
+      "source": "built in phase 4",
+      "cap": [
+        0.0,
+        1.5
+      ],
+      "log1p": true,
+      "skew_before": 1.5,
+      "skew_after": 0.88,
+      "mean": 0.29198742508703496,
+      "std": 0.15100935975813173
+    },
+    "collateral_coverage": {
+      "source": "built in phase 4",
+      "cap": [
+        0.0,
+        5.0
+      ],
+      "log1p": false,
+      "skew_before": 0.29,
+      "skew_after": 0.29,
+      "mean": 0.8772763746129133,
+      "std": 0.7941724655233181
+    },
+    "loan_to_income": {
+      "source": "built in phase 4",
+      "cap": [
+        0.0,
+        5.6206955413894395
+      ],
+      "log1p": true,
+      "skew_before": 1.42,
+      "skew_after": 0.74,
+      "mean": 0.7390899308082945,
+      "std": 0.464012218730159
+    },
+    "age_at_maturity": {
+      "source": "built in phase 4",
+      "cap": null,
+      "log1p": false,
+      "skew_before": 0.31,
+      "skew_after": 0.31,
+      "mean": 45.26434447039708,
+      "std": 10.849857046181345
+    },
+    "emp_senp": {
+      "source": "phase 3 semi_preprocessed_dataset (already transformed)"
+    },
+    "emp_sep": {
+      "source": "phase 3 semi_preprocessed_dataset (already transformed)"
+    },
+    "loan_type_business": {
+      "source": "phase 3 semi_preprocessed_dataset (already transformed)"
+    },
+    "loan_type_home": {
+      "source": "phase 3 semi_preprocessed_dataset (already transformed)"
+    },
+    "loan_type_vehicle": {
+      "source": "phase 3 semi_preprocessed_dataset (already transformed)"
+    }
+  },
+  "protected_audit_only": [
+    "gender_female",
+    "gender_transgender",
+    "gender_unknown",
+    "marital_single",
+    "marital_divorced",
+    "marital_widowed",
+    "marital_unknown"
+  ],
+  "scikit_learn_version": "1.8.0"
+}
