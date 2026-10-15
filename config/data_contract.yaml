@@ -1,0 +1,49 @@
+# FR-1 input contract for ONE application in canonical form (after raw spellings are mapped in Step 2).
+# Ranges are plausibility limits (is this a possible value?), NOT credit policy. Example: Age 19 is valid
+# input that R1 rejects, while Age 999 is invalid input that is refused before any rule runs.
+#
+# role:      id | applicant | financial | credit | loan | target | derived
+# protected: stored and audited, never a model feature
+# model:     whether the raw field may be a direct model input (derived features are decided in Step 2)
+version: 1
+fields:
+  Loan_ID:            {dtype: str,   unit: null,       required: false, role: id,        protected: false, model: false,
+                       pattern: '^[A-Za-z0-9_-]{1,32}$', note: assigned by the system when absent}
+  Applicant_ID:       {dtype: str,   unit: null,       required: false, role: id,        protected: false, model: false,
+                       pattern: '^[A-Za-z0-9_-]{1,32}$', note: customer identifier (e.g. PAN) used for the fraud registry (R02) and the lock layer}
+  Collateral_ID:      {dtype: str,   unit: null,       required: false, role: id,        protected: false, model: false,
+                       pattern: '^[A-Za-z0-9_/-]{1,64}$', note: property / vehicle registration id used by the lock layer (FR-10)}
+  Age:                {dtype: int,   unit: years,      required: true,  role: applicant, protected: false, model: false,
+                       min: 18, max: 75, note: used by rules R1/R2 and to derive the protected Age_Band; not a direct model input}
+  Gender:             {dtype: category, unit: null,    required: false, role: applicant, protected: true,  model: false,
+                       allowed: [Male, Female, Transgender]}
+  Marital_Status:     {dtype: category, unit: null,    required: false, role: applicant, protected: true,  model: false,
+                       allowed: [Married, Single, Divorced, Widowed]}
+  Dependents:         {dtype: int,   unit: count,      required: false, role: applicant, protected: false, model: true,
+                       min: 0, max: 3, note: 3 means 3 or more; also a fairness audit group}
+  Employment_Type:    {dtype: category, unit: null,    required: true,  role: applicant, protected: false, model: true,
+                       allowed: [Salaried, SEP, SENP]}
+  Work_Experience:    {dtype: int,   unit: years,      required: false, role: applicant, protected: false, model: true,
+                       min: 0, max: 57, note: must also be <= Age - 18}
+  Monthly_Income:     {dtype: float, unit: INR/month,  required: true,  role: financial, protected: false, model: true,
+                       min: 1, max: 100000000}
+  Coapplicant_Income: {dtype: float, unit: INR/month,  required: false, role: financial, protected: false, model: true,
+                       min: 0, max: 100000000, note: blank = no earning co-applicant}
+  Existing_EMI:       {dtype: float, unit: INR/month,  required: false, role: financial, protected: false, model: true,
+                       min: 0, max: 100000000}
+  CIBIL_Score:        {dtype: int,   unit: points,     required: false, role: credit,    protected: false, model: true,
+                       min: 300, max: 900, special: [-1], note: -1 = new to credit (no bureau history)}
+  Loan_Type:          {dtype: category, unit: null,    required: true,  role: loan,      protected: false, model: true,
+                       allowed: [Home, Vehicle, Personal, Business]}
+  Loan_Amount:        {dtype: float, unit: INR,        required: true,  role: loan,      protected: false, model: true,
+                       min: 10000, max: 1000000000}
+  Loan_Tenure:        {dtype: int,   unit: months,     required: true,  role: loan,      protected: false, model: true,
+                       min: 6, max: 360}
+  Collateral_Value:   {dtype: float, unit: INR,        required: false, role: loan,      protected: false, model: true,
+                       min: 0, max: 10000000000, note: blank or 0 = unsecured}
+  Property_Area:      {dtype: category, unit: null,    required: false, role: applicant, protected: false, model: false,
+                       allowed: [Urban, Semi-Urban, Rural], note: excluded from the model as a possible geographic proxy}
+  Loan_Status:        {dtype: category, unit: null,    required: false, role: target,    protected: false, model: false,
+                       allowed: [Approved, Rejected], note: historical label; never part of a live application}
+derived:
+  Age_Band:           {from: Age, role: derived, protected: true, model: false, note: bins in config/fairness.yaml}

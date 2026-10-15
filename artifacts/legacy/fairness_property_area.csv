@@ -1,0 +1,4 @@
+Property_Area,n,historical_rate,approval_rate,ci_low,ci_high,tpr,DIR,TPR_gap
+Rural,373,0.509,0.563,0.512,0.612,0.953,0.863,-0.006
+Semi-Urban,589,0.574,0.625,0.585,0.663,0.964,0.957,0.006
+Urban,979,0.618,0.653,0.622,0.682,0.959,1.0,0.0

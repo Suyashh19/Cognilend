@@ -1,0 +1,2 @@
+# Generated data must stay byte-identical across platforms (hash-checked by tests)
+data/synthetic/*.csv -text

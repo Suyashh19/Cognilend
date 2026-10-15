@@ -1,0 +1,6 @@
+# Internal fraud / wilful-defaulter registry used by rule R02. Demo entries only (no real people).
+version: 1
+applicant_ids:
+  - FRAUD0001
+  - FRAUD0002
+  - WILFUL0001

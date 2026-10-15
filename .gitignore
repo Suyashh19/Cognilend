@@ -1,0 +1,22 @@
+.venv/
+.venv-*/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+.streamlit/secrets.toml
+
+# generated
+data/processed/*
+!data/processed/.gitkeep
+artifacts/models/*
+artifacts/encoders/*
+artifacts/reports/*
+!artifacts/**/.gitkeep
+*.db
+artifacts/fallback/
+data/processed/loadtest/
+.coverage
+.vscode/
+src/.vscode/
