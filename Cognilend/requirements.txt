@@ -1,0 +1,19 @@
+# Resolved 2026-10-15 on CPython 3.14.3 (Windows x64). pandas 3.x requires Python >= 3.11.
+numpy==2.5.4
+pandas==3.0.6
+scikit-learn==1.9.1
+xgboost==3.4.1
+imbalanced-learn==0.14.2
+joblib==1.6.0
+PyYAML==6.0.3
+SQLAlchemy==2.1.4
+streamlit==1.66.0
+matplotlib==3.11.2
+graphviz==0.21
+dtreeviz==2.3.2
+pyarrow==26.0.0
+scipy==1.18.1
+pytest==9.1.1
+pytest-cov==7.1.0
+playwright==1.64.0      # screenshots only (scripts/screenshots.py), uses the installed Chrome or Edge
+coverage==7.16.2

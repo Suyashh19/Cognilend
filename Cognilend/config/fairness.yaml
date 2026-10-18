@@ -1,0 +1,11 @@
+# L4 fairness layer. Protected attributes are never model inputs; audit only.
+protected_attributes: [gender, marital_status, age_band]
+min_disparate_impact: 0.80
+reference: most_favoured        # or a subgroup name per group under groups.<g>.reference
+groups:
+  gender: {column: Gender, missing_label: Unknown}
+  age_band: {column: Age, bins: [0, 25, 35, 45, 55, 200],
+             labels: ["<=25", "26-35", "36-45", "46-55", ">55"]}
+  dependents: {column: Dependents, bins: [-1, 0, 2, 3], labels: ["0", "1-2", "3+"]}
+min_group_size: 30              # smaller subgroups are reported as "insufficient data", never flagged or hidden
+bootstrap: {n: 2000, ci: 0.95}

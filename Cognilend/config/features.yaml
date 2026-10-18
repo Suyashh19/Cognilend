@@ -1,0 +1,8 @@
+# Add-on feature flags. Nothing here changes an existing decision: add-ons are advisory and read-only.
+# Setting a flag to false makes the app behave exactly as it does without the add-on.
+max_amount_suggestion:
+  enabled: true
+  step: 10000                 # INR; candidate grid step, and the suggested amount is rounded DOWN to it
+  min_loan_amount: 50000      # INR; smallest amount the search will suggest (never below the contract minimum)
+  max_grid_points: 60         # full step grid when the range is this small; otherwise breakpoints only (exact)
+  log_suggestions: true       # best-effort write to the separate amount_suggestions table (F3)

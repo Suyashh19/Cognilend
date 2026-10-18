@@ -1,0 +1,20 @@
+# Stress twin: ADVISORY ONLY - never part of approve / reject. All thresholds are illustrative, to be calibrated.
+seed: 42
+n_paths: 1000
+horizon_months: 12
+days_in_month: 30
+shocks:
+  income_drop: {fraction: [0.20, 0.50], months: [1, 3]}       # income falls by 20-50% for 1-3 consecutive months
+  expense_spike: {multiple_of_essentials: [1.0, 2.0]}          # one extra outlay of 1-2x essentials in one month
+  payment_delay: {days: [5, 15]}                               # salary credited 5-15 days late in one month
+scenarios: [baseline, income_drop, expense_spike, payment_delay, combined]
+headline_scenario: combined
+bands:                       # on the shortfall probability of the headline scenario
+  resilient_below: 0.10      # < 10%  Resilient
+  vulnerable_below: 0.30     # 10-30% Vulnerable (show alternative terms); >= 30% -> suggest review
+resilience_weights: {no_shortfall: 0.5, buffer: 0.25, foir: 0.25}
+buffer_full_credit_months: 6        # buffer coverage that earns the full buffer component
+alternatives:
+  lower_amount_factor: 0.8          # 20% smaller loan
+  longer_tenure_extra_months: 24
+  due_day_after_income_days: 5      # EMI due date moved to income date + 5 days

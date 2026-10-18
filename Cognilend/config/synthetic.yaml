@@ -1,0 +1,135 @@
+# Parameters for src/cognilend/data/synthetic.py. Every number used by the generator lives here.
+seed: 42
+n_rows: 10000            # final file, including duplicates
+n_duplicates: 135        # exact duplicate rows appended (double submissions)
+n_unlabelled: 18         # Loan_Status left blank
+approval_rate: 0.585     # share of labelled unique rows that are Approved
+id_prefix: LN2025
+
+applicant:
+  gender: {Male: 0.705, Female: 0.289, Transgender: 0.006}
+  age: {mean: 38, sd: 9, min: 19, max: 70}
+  employment: {Salaried: 0.60, SEP: 0.15, SENP: 0.25}
+  area: {Urban: 0.50, Semi-Urban: 0.30, Rural: 0.20}
+  married_logistic: {midpoint_age: 28, scale: 3, ceiling: 0.85}
+  divorced_or_widowed_share: 0.05            # of non-single adults over 35
+  dependents_p: {married: [0.15, 0.30, 0.35, 0.20], other: [0.75, 0.15, 0.07, 0.03]}   # 0,1,2,3+
+  experience_start_age: 20
+
+income:                     # log-normal monthly income, INR
+  log_base: 10.55           # exp(10.55) ~ 38,000
+  sd: 0.50
+  employment_shift: {Salaried: 0.0, SEP: 0.35, SENP: 0.15}
+  area_shift: {Urban: 0.20, Semi-Urban: 0.0, Rural: -0.25}
+  per_year_experience: 0.025
+  experience_cap: 20
+  gender_gap: {Male: 0.0, Female: -0.15, Transgender: -0.15}   # ~15% historical income gap
+  round_to: 100
+  coapplicant_p: {married: 0.55, other: 0.10}
+  coapplicant_share: [0.30, 0.90]
+  existing_loan_p: 0.38
+  existing_emi_share: [0.05, 0.40]
+
+credit:
+  cibil: {mean: 735, sd: 65, min: 300, max: 900}
+  ntc_p: {base: 0.04, young_extra: 0.12, young_below_age: 25, rural_extra: 0.04}
+  stability_link: 25        # CIBIL points per 1 sd of income stability
+
+loan:
+  type: {Home: 0.30, Personal: 0.30, Vehicle: 0.22, Business: 0.18}
+  amount_income_multiple:   # amount = monthly income x U(lo, hi)
+    Home: [25, 60]
+    Personal: [3, 12]
+    Vehicle: [4, 12]
+    Business: [4, 15]
+  amount_round_to: 10000
+  tenure_months:
+    Home: {values: [120, 180, 240, 300, 360], p: [0.15, 0.30, 0.32, 0.17, 0.06]}
+    Vehicle: {values: [36, 48, 60, 84], p: [0.25, 0.30, 0.35, 0.10]}
+    Personal: {values: [12, 24, 36, 48, 60], p: [0.15, 0.25, 0.30, 0.15, 0.15]}
+    Business: {values: [12, 24, 36, 60], p: [0.15, 0.30, 0.35, 0.20]}
+  # Most applicants pick a tenure that ends before they plan to stop working (applicant behaviour,
+  # independent of the bank's R2 limits). The rest ask for the tenure they want.
+  tenure_fits_plan_p: 0.85
+  plan_to_finish_by_age: 60
+  home_ltv_beta: [7.0, 3.5]          # mean LTV ~0.67; tail exceeds the RBI caps
+  vehicle_ltv: [0.75, 0.95]
+  business_secured_p: 0.15
+  business_coverage: [1.0, 2.0]
+  collateral_round_to: 10000
+
+# Latent repayment-risk score (higher = more creditworthy). The label is derived from this score
+# plus noise. Policy rules are NOT used to make the label (see docs/data_decision.md).
+latent:
+  stability: {Salaried: 0.80, SEP: 0.60, SENP: 0.45, per_year_experience: 0.01, sd: 0.15}
+  weights:                  # applied to standardised inputs
+    stability: 0.8
+    foir: -1.4              # higher FOIR = riskier
+    cibil: 1.3
+    experience: 0.5         # log1p(years)
+    coverage: 0.5           # collateral / loan amount, capped
+    ntc: -0.6               # new-to-credit indicator (not standardised)
+  coverage_cap: 3.0
+  noise: logistic           # logistic(0, noise_scale)
+  noise_scale: 0.50
+  group_bias:               # small historical bias injected on purpose, so the fairness audit has a known signal
+    Male: 0.0
+    Female: -0.25
+    Transgender: -0.40
+
+defects:
+  whitespace_rate: 0.02                     # per text categorical column
+  variant_rate: 0.08                        # spelling variants, per text categorical column
+  amount_as_text: 584                       # Indian digit grouping, e.g. "12,50,000"
+  amount_with_rs_prefix: 94                 # subset of the above: "Rs. 27,90,000"
+  impossible_age: 29
+  impossible_age_values: [-30, 0, 1, 5, 150, 200, 999]
+  negative_income: 22
+  zero_income: 8
+  invalid_cibil: 33
+  invalid_cibil_values: [0, 100, 999, 1000, 9999]
+  impossible_experience: 45
+  home_tenure_in_years: 95
+  missing_rate:                             # MCAR, share of rows
+    Gender: 0.018
+    Marital_Status: 0.012
+    Dependents: 0.024
+    Work_Experience: 0.030
+    Monthly_Income: 0.010
+    Existing_EMI: 0.025
+    CIBIL_Score: 0.010
+    Loan_Amount: 0.015
+    Loan_Tenure: 0.018
+    Property_Area: 0.015
+
+labels:     # how canonical values are written in the raw file, and the variants used for dirt
+  Gender:
+    canonical: {Male: Male, Female: Female, Transgender: Transgender}
+    variants: {Male: [M, male, MALE], Female: [F, female, FEMALE], Transgender: [TG, transgender]}
+  Marital_Status:
+    canonical: {Married: Married, Single: Single, Divorced: Divorced, Widowed: Widowed}
+    variants: {Married: [married, MARRIED], Single: [single, Unmarried], Divorced: [divorced], Widowed: [widowed]}
+  Employment_Type:
+    canonical: {Salaried: Salaried, SEP: Self-Employed Professional, SENP: Self-Employed Non-Professional}
+    variants: {Salaried: [salaried, SALARIED, Service], SEP: [SEP, Self Employed Professional, self-employed professional],
+               SENP: [SENP, Self Employed Business, Business Owner]}
+  Loan_Type:
+    canonical: {Home: Home Loan, Vehicle: Vehicle Loan, Personal: Personal Loan, Business: Business Loan}
+    variants: {Home: [HL, Housing Loan, home loan], Vehicle: [Auto Loan, Car Loan, vehicle loan],
+               Personal: [PL, Personal, personal loan], Business: [BL, MSME Loan, business loan]}
+  Property_Area:
+    canonical: {Urban: Urban, Semi-Urban: Semi-Urban, Rural: Rural}
+    variants: {Urban: [urban, URBAN], Semi-Urban: [Semiurban, Semi Urban, semi-urban], Rural: [rural, RURAL]}
+
+# Frozen copy of the original R1-R7 parameters, used ONLY by scripts/describe_synthetic.py so the Step 1
+# dataset profile stays reproducible after policies_v1.yaml was restructured in Step 6.
+diagnostic_rules:
+  R1: {min_age: 21}
+  R2: {max_maturity_age: {Salaried: 60, SEP: 65, SENP: 65}}
+  R3: {min_cibil: 650}
+  R4: {foir_slabs: [{income_below: 50000, max_foir: 0.50}, {income_upto: 100000, max_foir: 0.55},
+                    {income_above: 100000, max_foir: 0.65}]}
+  R5: {ltv_slabs: [{amount_upto: 3000000, max_ltv: 0.90}, {amount_upto: 7500000, max_ltv: 0.80},
+                   {amount_above: 7500000, max_ltv: 0.75}]}
+  R6: {min_total_income: 15000}
+  R7: {min_experience: {Salaried: 1, SEP: 3, SENP: 3}}

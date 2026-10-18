@@ -1,0 +1,1317 @@
+[
+ {
+  "name": "synthetic.seed",
+  "value": 42,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "seed",
+  "description": "Random seed of the generator"
+ },
+ {
+  "name": "synthetic.n_rows",
+  "value": 10000,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "n_rows",
+  "description": "Rows in the raw synthetic file"
+ },
+ {
+  "name": "synthetic.n_duplicates",
+  "value": 135,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "n_duplicates",
+  "description": "Exact duplicate rows injected"
+ },
+ {
+  "name": "synthetic.n_unlabelled",
+  "value": 18,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "n_unlabelled",
+  "description": "Rows with blank Loan_Status"
+ },
+ {
+  "name": "synthetic.approval_rate_target",
+  "value": 0.585,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "approval_rate",
+  "description": "Target approval share"
+ },
+ {
+  "name": "defect.whitespace_rate",
+  "value": 0.02,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "defects.whitespace_rate",
+  "description": "Stray whitespace rate per text column"
+ },
+ {
+  "name": "defect.variant_rate",
+  "value": 0.08,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "defects.variant_rate",
+  "description": "Spelling-variant rate per text column"
+ },
+ {
+  "name": "defect.amount_as_text",
+  "value": 584,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "defects.amount_as_text",
+  "description": "Loan amounts written as Indian-grouped text"
+ },
+ {
+  "name": "defect.amount_with_rs_prefix",
+  "value": 94,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "defects.amount_with_rs_prefix",
+  "description": "Of those, with \"Rs.\" prefix"
+ },
+ {
+  "name": "defect.impossible_age",
+  "value": 29,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "defects.impossible_age",
+  "description": "Rows with impossible age"
+ },
+ {
+  "name": "defect.negative_income",
+  "value": 22,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "defects.negative_income",
+  "description": "Rows with negative income (sign error)"
+ },
+ {
+  "name": "defect.zero_income",
+  "value": 8,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "defects.zero_income",
+  "description": "Rows with zero income"
+ },
+ {
+  "name": "defect.invalid_cibil",
+  "value": 33,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "defects.invalid_cibil",
+  "description": "Rows with invalid CIBIL"
+ },
+ {
+  "name": "defect.impossible_experience",
+  "value": 45,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "defects.impossible_experience",
+  "description": "Rows with impossible experience"
+ },
+ {
+  "name": "defect.home_tenure_in_years",
+  "value": 95,
+  "source": "config/synthetic.yaml",
+  "kind": "yaml",
+  "locator": "defects.home_tenure_in_years",
+  "description": "Home-loan tenures written in years"
+ },
+ {
+  "name": "synthetic.raw_rows",
+  "value": 10000,
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "raw_shape.0",
+  "description": "Raw rows"
+ },
+ {
+  "name": "synthetic.raw_cols",
+  "value": 17,
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "raw_shape.1",
+  "description": "Raw columns"
+ },
+ {
+  "name": "synthetic.approval_rate_unique",
+  "value": 0.585,
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "approval_rate_unique_rows",
+  "description": "Approval rate, unique rows"
+ },
+ {
+  "name": "synthetic.any_rule_violated",
+  "value": 0.343,
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "any_rule_violated",
+  "description": "Share violating any original rule"
+ },
+ {
+  "name": "synthetic.approval_if_violation",
+  "value": 0.2719,
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "approval_rate_if_violation",
+  "description": "Label approval rate among rule violators"
+ },
+ {
+  "name": "synthetic.approval_if_compliant",
+  "value": 0.7485,
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "approval_rate_if_compliant",
+  "description": "Label approval rate among compliant"
+ },
+ {
+  "name": "synthetic.acc_rules_only",
+  "value": 0.7415,
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "accuracy_rules_only_predictor",
+  "description": "Accuracy of rules-only predictor vs label"
+ },
+ {
+  "name": "synthetic.acc_noise_free",
+  "value": 0.9021,
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "accuracy_noise_free_latent_score",
+  "description": "Accuracy ceiling of noise-free latent score"
+ },
+ {
+  "name": "synthetic.ntc_rate",
+  "value": 0.0516,
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "ntc_rate",
+  "description": "New-to-credit share"
+ },
+ {
+  "name": "synthetic.median_income",
+  "value": 54700.0,
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "median_monthly_income",
+  "description": "Median monthly income (INR)"
+ },
+ {
+  "name": "synthetic.gender_n_male",
+  "value": 7005,
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "label_rate_by_gender.Male.n",
+  "description": "Male rows"
+ },
+ {
+  "name": "synthetic.gender_n_female",
+  "value": 2793,
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "label_rate_by_gender.Female.n",
+  "description": "Female rows"
+ },
+ {
+  "name": "synthetic.gender_n_tg",
+  "value": 67,
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "label_rate_by_gender.Transgender.n",
+  "description": "Transgender rows"
+ },
+ {
+  "name": "synthetic.sha256",
+  "value": "084ecd3ca85b3cd788e7f282a1293fbb978d7265ad2141880e7ae1ca06ea39a7",
+  "source": "artifacts/reports/synthetic_profile.json",
+  "kind": "json",
+  "locator": "sha256",
+  "description": "SHA-256 of raw file"
+ },
+ {
+  "name": "prep.rows_in",
+  "value": 10000,
+  "source": "artifacts/reports/preprocess_summary.json",
+  "kind": "json",
+  "locator": "rows_in",
+  "description": "Rows before cleaning"
+ },
+ {
+  "name": "prep.rows_out",
+  "value": 9847,
+  "source": "artifacts/reports/preprocess_summary.json",
+  "kind": "json",
+  "locator": "rows_out",
+  "description": "Rows after cleaning"
+ },
+ {
+  "name": "prep.n_features",
+  "value": 20,
+  "source": "artifacts/reports/preprocess_summary.json",
+  "kind": "json",
+  "locator": "feature_names.__len__",
+  "description": "Model feature columns"
+ },
+ {
+  "name": "split.train_n",
+  "value": 6892,
+  "source": "artifacts/reports/preprocess_summary.json",
+  "kind": "json",
+  "locator": "class_distribution.train.n",
+  "description": "Training rows"
+ },
+ {
+  "name": "split.val_n",
+  "value": 1477,
+  "source": "artifacts/reports/preprocess_summary.json",
+  "kind": "json",
+  "locator": "class_distribution.val.n",
+  "description": "Validation rows"
+ },
+ {
+  "name": "split.test_n",
+  "value": 1478,
+  "source": "artifacts/reports/preprocess_summary.json",
+  "kind": "json",
+  "locator": "class_distribution.test.n",
+  "description": "Test rows"
+ },
+ {
+  "name": "split.train_approved_share",
+  "value": 0.5855,
+  "source": "artifacts/reports/preprocess_summary.json",
+  "kind": "json",
+  "locator": "class_distribution.train.approved_share",
+  "description": "Approved share, train"
+ },
+ {
+  "name": "split.val_approved_share",
+  "value": 0.5856,
+  "source": "artifacts/reports/preprocess_summary.json",
+  "kind": "json",
+  "locator": "class_distribution.val.approved_share",
+  "description": "Approved share, val"
+ },
+ {
+  "name": "split.test_approved_share",
+  "value": 0.5853,
+  "source": "artifacts/reports/preprocess_summary.json",
+  "kind": "json",
+  "locator": "class_distribution.test.approved_share",
+  "description": "Approved share, test"
+ },
+ {
+  "name": "smote.before_rejected",
+  "value": 2857,
+  "source": "artifacts/reports/preprocess_summary.json",
+  "kind": "json",
+  "locator": "smote_train_counts.before.0",
+  "description": "Train Rejected before SMOTE"
+ },
+ {
+  "name": "smote.before_approved",
+  "value": 4035,
+  "source": "artifacts/reports/preprocess_summary.json",
+  "kind": "json",
+  "locator": "smote_train_counts.before.1",
+  "description": "Train Approved before SMOTE"
+ },
+ {
+  "name": "smote.after_rejected",
+  "value": 4035,
+  "source": "artifacts/reports/preprocess_summary.json",
+  "kind": "json",
+  "locator": "smote_train_counts.after.0",
+  "description": "Train Rejected after SMOTE"
+ },
+ {
+  "name": "smote.after_approved",
+  "value": 4035,
+  "source": "artifacts/reports/preprocess_summary.json",
+  "kind": "json",
+  "locator": "smote_train_counts.after.1",
+  "description": "Train Approved after SMOTE"
+ },
+ {
+  "name": "contract.n_fields",
+  "value": 18,
+  "source": "docs/traceability.md",
+  "kind": "regex",
+  "locator": "contract: (\\d+) fields",
+  "description": "Fields in the data contract (per traceability)"
+ },
+ {
+  "name": "dt.depth",
+  "value": 4,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "depth",
+  "description": "Tree depth"
+ },
+ {
+  "name": "dt.node_count",
+  "value": 15,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "node_count",
+  "description": "Tree nodes"
+ },
+ {
+  "name": "dt.n_leaves",
+  "value": 8,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "n_leaves",
+  "description": "Tree leaves"
+ },
+ {
+  "name": "dt.cap_depth",
+  "value": 4,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "caps.max_depth",
+  "description": "Depth cap"
+ },
+ {
+  "name": "dt.cap_nodes",
+  "value": 15,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "caps.max_total_nodes",
+  "description": "Node cap"
+ },
+ {
+  "name": "dt.min_samples_leaf",
+  "value": 200,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "params.min_samples_leaf",
+  "description": "Chosen min_samples_leaf"
+ },
+ {
+  "name": "dt.train_acc",
+  "value": 0.80586186883343,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "train_accuracy",
+  "description": "Train accuracy"
+ },
+ {
+  "name": "dt.val_acc",
+  "value": 0.7826675693974272,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "val_accuracy",
+  "description": "Validation accuracy"
+ },
+ {
+  "name": "dt.test_acc",
+  "value": 0.7929634641407307,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "test_accuracy",
+  "description": "Test accuracy"
+ },
+ {
+  "name": "dt.gap",
+  "value": 0.02319429943600282,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "generalization_gap",
+  "description": "Generalization gap train-val"
+ },
+ {
+  "name": "dt.kpi_val_min",
+  "value": 0.8,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "kpi_val_accuracy_min",
+  "description": "KPI threshold val accuracy"
+ },
+ {
+  "name": "dt.gap_max",
+  "value": 0.15,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "gap_max",
+  "description": "Gap limit"
+ },
+ {
+  "name": "dt.test_roc_auc",
+  "value": 0.8517788946619016,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "scores.test.roc_auc",
+  "description": "Test ROC-AUC"
+ },
+ {
+  "name": "dt.val_roc_auc",
+  "value": 0.8370631682345385,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "scores.val.roc_auc",
+  "description": "Val ROC-AUC"
+ },
+ {
+  "name": "dt.test_cm_TN",
+  "value": 451,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "scores.test.confusion_matrix.0.0",
+  "description": "Test: actual Rejected, predicted Rejected"
+ },
+ {
+  "name": "dt.test_cm_FP",
+  "value": 162,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "scores.test.confusion_matrix.0.1",
+  "description": "Test: actual Rejected, predicted Approved"
+ },
+ {
+  "name": "dt.test_cm_FN",
+  "value": 144,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "scores.test.confusion_matrix.1.0",
+  "description": "Test: actual Approved, predicted Rejected"
+ },
+ {
+  "name": "dt.test_cm_TP",
+  "value": 721,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "scores.test.confusion_matrix.1.1",
+  "description": "Test: actual Approved, predicted Approved"
+ },
+ {
+  "name": "dt.test_precision_approved",
+  "value": 0.8165,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "scores.test.per_class.Approved.precision",
+  "description": "Test precision (Approved)"
+ },
+ {
+  "name": "dt.test_recall_approved",
+  "value": 0.8335,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "scores.test.per_class.Approved.recall",
+  "description": "Test recall (Approved)"
+ },
+ {
+  "name": "dt.test_f1_approved",
+  "value": 0.8249,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "scores.test.per_class.Approved.f1-score",
+  "description": "Test F1 (Approved)"
+ },
+ {
+  "name": "dt.test_precision_rejected",
+  "value": 0.758,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "scores.test.per_class.Rejected.precision",
+  "description": "Test precision (Rejected)"
+ },
+ {
+  "name": "dt.test_recall_rejected",
+  "value": 0.7357,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "scores.test.per_class.Rejected.recall",
+  "description": "Test recall (Rejected)"
+ },
+ {
+  "name": "dt.ig_top_feature",
+  "value": "cibil_score",
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "information_gain_ranking.0.feature",
+  "description": "Highest information-gain feature"
+ },
+ {
+  "name": "dt.ig_top_gain",
+  "value": 0.131951,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "information_gain_ranking.0.gain",
+  "description": "Its information gain (bits)"
+ },
+ {
+  "name": "dt.ig_second_feature",
+  "value": "foir",
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "information_gain_ranking.1.feature",
+  "description": "Second feature"
+ },
+ {
+  "name": "dt.ig_second_gain",
+  "value": 0.097452,
+  "source": "artifacts/reports/dt_metrics.json",
+  "kind": "json",
+  "locator": "information_gain_ranking.1.gain",
+  "description": "Its information gain (bits)"
+ },
+ {
+  "name": "dt.root_split",
+  "value": "cibil_score <= 742",
+  "source": "artifacts/reports/tree_rules.txt",
+  "kind": "regex",
+  "locator": "if (cibil_score <= \\d+) CIBIL",
+  "description": "Root split rule"
+ },
+ {
+  "name": "dt.entropy_max_abs_error",
+  "value": 0.0,
+  "source": "artifacts/reports/kpi_report.md",
+  "kind": "regex",
+  "locator": "Entropy max abs error[^|]*\\| ([^|]+?) \\|",
+  "description": "Entropy error vs scipy"
+ },
+ {
+  "name": "bench.decision_tree.test_accuracy",
+  "value": 0.793,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=decision_tree:test_accuracy",
+  "description": "decision_tree test_accuracy"
+ },
+ {
+  "name": "bench.decision_tree.test_f1",
+  "value": 0.8249,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=decision_tree:test_f1",
+  "description": "decision_tree test_f1"
+ },
+ {
+  "name": "bench.decision_tree.test_roc_auc",
+  "value": 0.8518,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=decision_tree:test_roc_auc",
+  "description": "decision_tree test_roc_auc"
+ },
+ {
+  "name": "bench.decision_tree.val_accuracy",
+  "value": 0.7827,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=decision_tree:val_accuracy",
+  "description": "decision_tree val_accuracy"
+ },
+ {
+  "name": "bench.decision_tree.cv_accuracy_mean",
+  "value": 0.7925,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=decision_tree:cv_accuracy_mean",
+  "description": "decision_tree cv_accuracy_mean"
+ },
+ {
+  "name": "bench.decision_tree.complexity",
+  "value": "depth 4, 15 nodes",
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=decision_tree:complexity",
+  "description": "decision_tree complexity"
+ },
+ {
+  "name": "bench.random_forest.test_accuracy",
+  "value": 0.8674,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=random_forest:test_accuracy",
+  "description": "random_forest test_accuracy"
+ },
+ {
+  "name": "bench.random_forest.test_f1",
+  "value": 0.8884,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=random_forest:test_f1",
+  "description": "random_forest test_f1"
+ },
+ {
+  "name": "bench.random_forest.test_roc_auc",
+  "value": 0.9368,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=random_forest:test_roc_auc",
+  "description": "random_forest test_roc_auc"
+ },
+ {
+  "name": "bench.random_forest.val_accuracy",
+  "value": 0.8626,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=random_forest:val_accuracy",
+  "description": "random_forest val_accuracy"
+ },
+ {
+  "name": "bench.random_forest.cv_accuracy_mean",
+  "value": 0.8572,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=random_forest:cv_accuracy_mean",
+  "description": "random_forest cv_accuracy_mean"
+ },
+ {
+  "name": "bench.random_forest.complexity",
+  "value": "300 trees, depth up to 30",
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=random_forest:complexity",
+  "description": "random_forest complexity"
+ },
+ {
+  "name": "bench.xgboost.test_accuracy",
+  "value": 0.8674,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=xgboost:test_accuracy",
+  "description": "xgboost test_accuracy"
+ },
+ {
+  "name": "bench.xgboost.test_f1",
+  "value": 0.8888,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=xgboost:test_f1",
+  "description": "xgboost test_f1"
+ },
+ {
+  "name": "bench.xgboost.test_roc_auc",
+  "value": 0.941,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=xgboost:test_roc_auc",
+  "description": "xgboost test_roc_auc"
+ },
+ {
+  "name": "bench.xgboost.val_accuracy",
+  "value": 0.8639,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=xgboost:val_accuracy",
+  "description": "xgboost val_accuracy"
+ },
+ {
+  "name": "bench.xgboost.cv_accuracy_mean",
+  "value": 0.8672,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=xgboost:cv_accuracy_mean",
+  "description": "xgboost cv_accuracy_mean"
+ },
+ {
+  "name": "bench.xgboost.complexity",
+  "value": "300 trees, depth 3",
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=xgboost:complexity",
+  "description": "xgboost complexity"
+ },
+ {
+  "name": "bench.gradient_boosting.test_accuracy",
+  "value": 0.8681,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=gradient_boosting:test_accuracy",
+  "description": "gradient_boosting test_accuracy"
+ },
+ {
+  "name": "bench.gradient_boosting.test_f1",
+  "value": 0.8889,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=gradient_boosting:test_f1",
+  "description": "gradient_boosting test_f1"
+ },
+ {
+  "name": "bench.gradient_boosting.test_roc_auc",
+  "value": 0.9411,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=gradient_boosting:test_roc_auc",
+  "description": "gradient_boosting test_roc_auc"
+ },
+ {
+  "name": "bench.gradient_boosting.val_accuracy",
+  "value": 0.8592,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=gradient_boosting:val_accuracy",
+  "description": "gradient_boosting val_accuracy"
+ },
+ {
+  "name": "bench.gradient_boosting.cv_accuracy_mean",
+  "value": 0.8626,
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=gradient_boosting:cv_accuracy_mean",
+  "description": "gradient_boosting cv_accuracy_mean"
+ },
+ {
+  "name": "bench.gradient_boosting.complexity",
+  "value": "200 trees, depth 3",
+  "source": "artifacts/reports/benchmark.csv",
+  "kind": "csv",
+  "locator": "model=gradient_boosting:complexity",
+  "description": "gradient_boosting complexity"
+ },
+ {
+  "name": "bench.interpretability_cost",
+  "value": 0.0751,
+  "source": "artifacts/reports/kpi_report.md",
+  "kind": "regex",
+  "locator": "Interpretability cost[^|]*\\| ([0-9.]+) \\|",
+  "description": "Best ensemble minus tree, test acc"
+ },
+ {
+  "name": "conf.tau",
+  "value": 0.7,
+  "source": "config/settings.yaml",
+  "kind": "yaml",
+  "locator": "confidence.tau",
+  "description": "Confidence threshold tau"
+ },
+ {
+  "name": "conf.n_min",
+  "value": 30,
+  "source": "config/settings.yaml",
+  "kind": "yaml",
+  "locator": "confidence.n_min",
+  "description": "Minimum leaf support"
+ },
+ {
+  "name": "conf.prior",
+  "value": [
+   1,
+   1
+  ],
+  "source": "artifacts/reports/routing.json",
+  "kind": "json",
+  "locator": "prior",
+  "description": "Beta prior"
+ },
+ {
+  "name": "conf.target_auto_acc",
+  "value": 0.9,
+  "source": "artifacts/reports/routing.json",
+  "kind": "json",
+  "locator": "target_auto_accuracy",
+  "description": "Target auto accuracy"
+ },
+ {
+  "name": "conf.brier_bayes",
+  "value": 0.15784517419176217,
+  "source": "artifacts/reports/routing.json",
+  "kind": "json",
+  "locator": "brier.bayes",
+  "description": "Brier score, Bayesian"
+ },
+ {
+  "name": "conf.brier_raw",
+  "value": 0.161254148978059,
+  "source": "artifacts/reports/routing.json",
+  "kind": "json",
+  "locator": "brier.raw",
+  "description": "Brier score, raw leaf fraction"
+ },
+ {
+  "name": "route.test_auto",
+  "value": 894,
+  "source": "artifacts/reports/routing.json",
+  "kind": "json",
+  "locator": "routing.test.auto",
+  "description": "Test auto (ML layer)"
+ },
+ {
+  "name": "route.test_review",
+  "value": 584,
+  "source": "artifacts/reports/routing.json",
+  "kind": "json",
+  "locator": "routing.test.review",
+  "description": "Test review (ML layer)"
+ },
+ {
+  "name": "route.test_auto_share",
+  "value": 0.6048714479025711,
+  "source": "artifacts/reports/routing.json",
+  "kind": "json",
+  "locator": "routing.test.auto_share",
+  "description": "Test auto share (ML layer)"
+ },
+ {
+  "name": "route.test_auto_acc",
+  "value": 0.889261744966443,
+  "source": "artifacts/reports/routing.json",
+  "kind": "json",
+  "locator": "routing.test.auto_accuracy",
+  "description": "Test auto accuracy (ML layer)"
+ },
+ {
+  "name": "route.test_review_acc",
+  "value": 0.6455479452054794,
+  "source": "artifacts/reports/routing.json",
+  "kind": "json",
+  "locator": "routing.test.review_accuracy",
+  "description": "Test review accuracy (ML layer)"
+ },
+ {
+  "name": "route.val_auto_share",
+  "value": 0.5890318212593094,
+  "source": "artifacts/reports/routing.json",
+  "kind": "json",
+  "locator": "routing.val.auto_share",
+  "description": "Val auto share"
+ },
+ {
+  "name": "route.val_auto_acc",
+  "value": 0.8724137931034482,
+  "source": "artifacts/reports/routing.json",
+  "kind": "json",
+  "locator": "routing.val.auto_accuracy",
+  "description": "Val auto accuracy"
+ },
+ {
+  "name": "rare.n",
+  "value": 335,
+  "source": "artifacts/reports/rare_subset.json",
+  "kind": "json",
+  "locator": "n",
+  "description": "Rare/edge profiles"
+ },
+ {
+  "name": "rare.auto_by_model",
+  "value": 0,
+  "source": "artifacts/reports/rare_subset.json",
+  "kind": "json",
+  "locator": "auto_decided_by_model",
+  "description": "Rare profiles auto-decided by model"
+ },
+ {
+  "name": "rare.routed_to_review",
+  "value": 175,
+  "source": "artifacts/reports/rare_subset.json",
+  "kind": "json",
+  "locator": "routed_to_review",
+  "description": "Rare profiles routed to review"
+ },
+ {
+  "name": "rare.hard_rejected",
+  "value": 160,
+  "source": "artifacts/reports/rare_subset.json",
+  "kind": "json",
+  "locator": "hard_rejected",
+  "description": "Rare profiles hard-rejected"
+ },
+ {
+  "name": "policy.version",
+  "value": "v1",
+  "source": "config/policies_v1.yaml",
+  "kind": "yaml",
+  "locator": "version",
+  "description": "Policy version"
+ },
+ {
+  "name": "policy.n_rules",
+  "value": 11,
+  "source": "config/policies_v1.yaml",
+  "kind": "yaml",
+  "locator": "rules.__len__",
+  "description": "Number of rules"
+ },
+ {
+  "name": "rules.train_hard_reject_share",
+  "value": 0.2897562391178178,
+  "source": "artifacts/reports/rule_analysis.json",
+  "kind": "json",
+  "locator": "buckets.REJECT (HARD rule).share",
+  "description": "Train share rejected by HARD rule"
+ },
+ {
+  "name": "rules.train_soft_review_share",
+  "value": 0.13305281485780615,
+  "source": "artifacts/reports/rule_analysis.json",
+  "kind": "json",
+  "locator": "buckets.REVIEW (SOFT rule).share",
+  "description": "Train share sent to review by SOFT rule"
+ },
+ {
+  "name": "rules.train_pass_share",
+  "value": 0.528438769587928,
+  "source": "artifacts/reports/rule_analysis.json",
+  "kind": "json",
+  "locator": "buckets.PASS.share",
+  "description": "Train share passing all rules"
+ },
+ {
+  "name": "rules.precision",
+  "value": "1.0000 (800/800 fired)",
+  "source": "artifacts/reports/kpi_report.md",
+  "kind": "regex",
+  "locator": "Rule-trigger precision[^|]*\\| ([0-9.]+ \\(\\d+/\\d+ fired\\)) \\|",
+  "description": "Rule-trigger precision"
+ },
+ {
+  "name": "pipe.n",
+  "value": 1478,
+  "source": "artifacts/reports/pipeline_eval.md",
+  "kind": "regex",
+  "locator": "Applications in: \\*\\*(\\d+)\\*\\*",
+  "description": "Test applications through pipeline"
+ },
+ {
+  "name": "pipe.approved_model",
+  "value": 476,
+  "source": "artifacts/reports/pipeline_eval.md",
+  "kind": "regex",
+  "locator": "\\| Approved \\| MODEL \\| (\\d+) \\|",
+  "description": "Approved by model"
+ },
+ {
+  "name": "pipe.review_model",
+  "value": 230,
+  "source": "artifacts/reports/pipeline_eval.md",
+  "kind": "regex",
+  "locator": "\\| Human Review \\| MODEL \\| (\\d+) \\|",
+  "description": "Review (low confidence)"
+ },
+ {
+  "name": "pipe.review_rule",
+  "value": 215,
+  "source": "artifacts/reports/pipeline_eval.md",
+  "kind": "regex",
+  "locator": "\\| Human Review \\| RULE \\| (\\d+) \\|",
+  "description": "Review (SOFT rule / lock)"
+ },
+ {
+  "name": "pipe.rejected_model",
+  "value": 67,
+  "source": "artifacts/reports/pipeline_eval.md",
+  "kind": "regex",
+  "locator": "\\| Rejected \\| MODEL \\| (\\d+) \\|",
+  "description": "Rejected by model"
+ },
+ {
+  "name": "pipe.rejected_rule",
+  "value": 490,
+  "source": "artifacts/reports/pipeline_eval.md",
+  "kind": "regex",
+  "locator": "\\| Rejected \\| RULE \\| (\\d+) \\|",
+  "description": "Rejected by rules / invalid input"
+ },
+ {
+  "name": "pipe.auto_share",
+  "value": "69.9%",
+  "source": "artifacts/reports/pipeline_eval.md",
+  "kind": "regex",
+  "locator": "Auto-decided[^*]*\\*\\*([0-9.]+%)\\*\\*",
+  "description": "Pipeline auto-decided share"
+ },
+ {
+  "name": "pipe.model_auto_acc",
+  "value": 0.9042,
+  "source": "artifacts/reports/pipeline_eval.md",
+  "kind": "regex",
+  "locator": "Model auto-decisions: n = \\d+, accuracy vs label \\*\\*([0-9.]+)\\*\\*",
+  "description": "Pipeline model auto-decision accuracy"
+ },
+ {
+  "name": "pipe.ms_per_decision",
+  "value": 34.7,
+  "source": "artifacts/reports/pipeline_eval.md",
+  "kind": "regex",
+  "locator": "([0-9.]+) ms per decision",
+  "description": "Mean time per decision"
+ },
+ {
+  "name": "pipe.rule_result_rows",
+  "value": 15521,
+  "source": "artifacts/reports/pipeline_eval.md",
+  "kind": "regex",
+  "locator": "Rule-result rows: ([0-9,]+)",
+  "description": "Rule-result rows"
+ },
+ {
+  "name": "audit.n_queries",
+  "value": 11,
+  "source": "docs/traceability.md",
+  "kind": "regex",
+  "locator": "\\| (\\d+) queries \\|",
+  "description": "SQL audit queries"
+ },
+ {
+  "name": "lock.requests",
+  "value": 500,
+  "source": "artifacts/reports/lock_load_test.json",
+  "kind": "json",
+  "locator": "requests",
+  "description": "Lock load test requests"
+ },
+ {
+  "name": "lock.collaterals",
+  "value": 50,
+  "source": "artifacts/reports/lock_load_test.json",
+  "kind": "json",
+  "locator": "collaterals",
+  "description": "Distinct collaterals"
+ },
+ {
+  "name": "lock.approved",
+  "value": 50,
+  "source": "artifacts/reports/lock_load_test.json",
+  "kind": "json",
+  "locator": "approved",
+  "description": "Approvals granted"
+ },
+ {
+  "name": "lock.max_per_collateral",
+  "value": 1,
+  "source": "artifacts/reports/lock_load_test.json",
+  "kind": "json",
+  "locator": "max_approvals_per_collateral",
+  "description": "Max approvals per collateral"
+ },
+ {
+  "name": "lock.p50_ms",
+  "value": 1224.6,
+  "source": "artifacts/reports/lock_load_test.json",
+  "kind": "json",
+  "locator": "lock_latency_ms.p50",
+  "description": "Lock latency p50 ms"
+ },
+ {
+  "name": "lock.p95_ms",
+  "value": 4916.3,
+  "source": "artifacts/reports/lock_load_test.json",
+  "kind": "json",
+  "locator": "lock_latency_ms.p95",
+  "description": "Lock latency p95 ms"
+ },
+ {
+  "name": "lock.chain",
+  "value": "OK",
+  "source": "artifacts/reports/lock_load_test.json",
+  "kind": "json",
+  "locator": "chain",
+  "description": "Audit chain after load test"
+ },
+ {
+  "name": "fair.min_di",
+  "value": 0.8,
+  "source": "config/fairness.yaml",
+  "kind": "yaml",
+  "locator": "min_disparate_impact",
+  "description": "DI threshold"
+ },
+ {
+  "name": "fair.min_group_size",
+  "value": 30,
+  "source": "config/fairness.yaml",
+  "kind": "yaml",
+  "locator": "min_group_size",
+  "description": "Minimum subgroup size"
+ },
+ {
+  "name": "fair.pipeline_min_di",
+  "value": 0.3659,
+  "source": "artifacts/reports/fairness_di.csv",
+  "kind": "csv",
+  "locator": "mode=pipeline&group=age_band&subgroup=<=25:di",
+  "description": "Pipeline DI, age <=25"
+ },
+ {
+  "name": "fair.pipeline_di_26_35",
+  "value": 0.6527,
+  "source": "artifacts/reports/fairness_di.csv",
+  "kind": "csv",
+  "locator": "mode=pipeline&group=age_band&subgroup=26-35:di",
+  "description": "Pipeline DI, age 26-35"
+ },
+ {
+  "name": "fair.pipeline_di_gt55",
+  "value": 0.75,
+  "source": "artifacts/reports/fairness_di.csv",
+  "kind": "csv",
+  "locator": "mode=pipeline&group=age_band&subgroup=>55:di",
+  "description": "Pipeline DI, age >55"
+ },
+ {
+  "name": "fair.pipeline_di_male",
+  "value": 0.8355,
+  "source": "artifacts/reports/fairness_di.csv",
+  "kind": "csv",
+  "locator": "mode=pipeline&group=gender&subgroup=Male:di",
+  "description": "Pipeline DI, Male vs Female"
+ },
+ {
+  "name": "fair.pipeline_di_dep0",
+  "value": 0.7557,
+  "source": "artifacts/reports/fairness_di.csv",
+  "kind": "csv",
+  "locator": "mode=pipeline&group=dependents&subgroup=0:di",
+  "description": "Pipeline DI, 0 dependents"
+ },
+ {
+  "name": "fair.model_only_di_le25",
+  "value": 0.9797,
+  "source": "artifacts/reports/fairness_di.csv",
+  "kind": "csv",
+  "locator": "mode=model_only&group=age_band&subgroup=<=25:di",
+  "description": "Model-only DI, age <=25"
+ },
+ {
+  "name": "fair.rules_only_di_le25",
+  "value": 0.4536,
+  "source": "artifacts/reports/fairness_di.csv",
+  "kind": "csv",
+  "locator": "mode=rules_only&group=age_band&subgroup=<=25:di",
+  "description": "Rules-only DI, age <=25"
+ },
+ {
+  "name": "fair.label_di_le25",
+  "value": 0.5459,
+  "source": "artifacts/reports/fairness_di.csv",
+  "kind": "csv",
+  "locator": "mode=label&group=age_band&subgroup=<=25:di",
+  "description": "Historical-label DI, age <=25"
+ },
+ {
+  "name": "fair.model_only_min_di_text",
+  "value": 0.866,
+  "source": "artifacts/reports/kpi_report.md",
+  "kind": "regex",
+  "locator": "model-only DI >= ([0-9.]+)",
+  "description": "Model-only minimum DI"
+ },
+ {
+  "name": "maxamt.step",
+  "value": 10000,
+  "source": "config/features.yaml",
+  "kind": "yaml",
+  "locator": "max_amount_suggestion.step",
+  "description": "Grid step INR"
+ },
+ {
+  "name": "maxamt.min_loan",
+  "value": 50000,
+  "source": "config/features.yaml",
+  "kind": "yaml",
+  "locator": "max_amount_suggestion.min_loan_amount",
+  "description": "Minimum suggested amount"
+ },
+ {
+  "name": "maxamt.rejected_cases",
+  "value": 557,
+  "source": "reports/feature_max_amount_eval.md",
+  "kind": "regex",
+  "locator": "\\| rejected_cases \\| (\\d+) \\|",
+  "description": "Rejected test cases"
+ },
+ {
+  "name": "maxamt.possible",
+  "value": 145,
+  "source": "reports/feature_max_amount_eval.md",
+  "kind": "regex",
+  "locator": "\\| possible \\| (\\d+) \\|",
+  "description": "Lower amount possible"
+ },
+ {
+  "name": "maxamt.not_possible",
+  "value": 412,
+  "source": "reports/feature_max_amount_eval.md",
+  "kind": "regex",
+  "locator": "\\| not_possible \\| (\\d+) \\|",
+  "description": "Not possible"
+ },
+ {
+  "name": "maxamt.confirmed",
+  "value": 145,
+  "source": "reports/feature_max_amount_eval.md",
+  "kind": "regex",
+  "locator": "\\| confirmed_approved \\| (\\d+) \\|",
+  "description": "Confirmed approved by normal pipeline"
+ },
+ {
+  "name": "maxamt.p50_ms",
+  "value": 61.2,
+  "source": "reports/feature_max_amount_eval.md",
+  "kind": "regex",
+  "locator": "\\| runtime_ms_p50 \\| ([0-9.]+) \\|",
+  "description": "Search time p50 ms"
+ },
+ {
+  "name": "maxamt.max_ms",
+  "value": 903.0,
+  "source": "reports/feature_max_amount_eval.md",
+  "kind": "regex",
+  "locator": "\\| runtime_ms_max \\| ([0-9.]+) \\|",
+  "description": "Search time max ms"
+ },
+ {
+  "name": "tests.junit_total",
+  "value": 314,
+  "source": "artifacts/reports/junit.xml",
+  "kind": "xml",
+  "locator": "tests",
+  "description": "Tests in last full JUnit run (pre add-on)"
+ },
+ {
+  "name": "tests.junit_failures",
+  "value": 0,
+  "source": "artifacts/reports/junit.xml",
+  "kind": "xml",
+  "locator": "failures",
+  "description": "Failures in that run"
+ },
+ {
+  "name": "tests.coverage",
+  "value": "75.2%",
+  "source": "artifacts/reports/kpi_report.md",
+  "kind": "regex",
+  "locator": "Line coverage of `src/cognilend`: \\*\\*([0-9.]+%)\\*\\*",
+  "description": "Line coverage"
+ },
+ {
+  "name": "tests.addons_collected",
+  "value": 46,
+  "source": "reports/pytest_after_addons.txt",
+  "kind": "regex",
+  "locator": "collected (\\d+) items",
+  "description": "Add-on tests collected (partial log)"
+ },
+ {
+  "name": "kpi.auto_cleared",
+  "value": 0.6989,
+  "source": "artifacts/reports/kpi_report.md",
+  "kind": "regex",
+  "locator": "Majority auto-cleared \\| ([0-9.]+) \\|",
+  "description": "Majority auto-cleared (pipeline)"
+ },
+ {
+  "name": "kpi.reproducible",
+  "value": "IDENTICAL",
+  "source": "artifacts/reports/kpi_report.md",
+  "kind": "regex",
+  "locator": "Reproducible \\(3 fresh-DB runs\\) \\| (\\w+) \\|",
+  "description": "Reproducibility"
+ },
+ {
+  "name": "stress.resilience_example",
+  "value": 35.3,
+  "source": "artifacts/reports/stress_twin_example.json",
+  "kind": "json",
+  "locator": "result.resilience",
+  "description": "Stress-twin example resilience score"
+ }
+]

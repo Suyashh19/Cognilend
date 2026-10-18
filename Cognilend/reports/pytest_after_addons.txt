@@ -1,0 +1,9 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-9.1.1, pluggy-1.7.0
+rootdir: C:\Users\Aditya\OneDrive\Desktop\Cognilend
+configfile: pytest.ini
+plugins: anyio-4.15.1, platformdirs-4.12.2, cov-7.1.0
+collected 46 items
+
+tests\addons\test_dry_run.py ...........
+tests\addons\test_max_amount.py ........

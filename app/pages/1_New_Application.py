@@ -72,3 +72,5 @@ with json_tab:
 if 'result' in st.session_state:
     st.divider()
     common.decision_card(st.session_state['result'])
+    from components.max_amount_panel import render_max_amount_panel  # noqa: E402
+    render_max_amount_panel(st.session_state['result'])

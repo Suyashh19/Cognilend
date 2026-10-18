@@ -14,6 +14,14 @@ Streamlit UI -> contract validation -> L1 policy rules (forward chaining; HARD =
 
 The output is **Approved / Rejected / Human Review**, together with a confidence (with a credible interval), a reason a person can read, the path through the tree, and an audit-log ID. An advisory **stress twin** (a Monte Carlo cash-flow test) is shown separately and never changes the decision.
 
+## Run it (from the shared zip)
+
+1. Install Python 3.11 or newer (on Windows, tick "Add python.exe to PATH").
+2. Unzip, then double-click `RUN_ME.bat` (Windows) or run `bash run.sh` (macOS / Linux).
+3. The first run installs everything into `.venv` (a few minutes). The app then opens at http://localhost:8501.
+
+The trained models and the seeded demo database come with the zip, so nothing needs to be retrained.
+
 ## Quick start (Windows PowerShell; `make <task>` works the same in Git Bash)
 
 ```powershell
