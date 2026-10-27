@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CogniLend Rule Layer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">CL</span>
+    <div>
+      <h1>CogniLend · Rule Layer</h1>
+      <p class="sub">Layer 1 policy rules, running live inside MySQL</p>
+    </div>
+  </div>
+  <div class="pills">
+    <span class="pill" id="pill-ruleset">Rule set: …</span>
+    <span class="pill" id="pill-audit">Audit chain: …</span>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- ============ LEFT: scenarios + form ============ -->
+  <section class="col">
+    <div class="card">
+      <h2>Edge-case scenarios</h2>
+      <p class="hint">Click one to fill the form and run it. Each scenario uses a fresh applicant.</p>
+      <div id="presets"></div>
+    </div>
+
+    <form class="card" id="form" autocomplete="off">
+      <h2>Loan application</h2>
+
+      <div class="grid">
+        <label><span>Full name</span><input name="full_name"></label>
+        <label><span>PAN <span class="tag">stored only as a hash</span></span><input name="pan"></label>
+        <label><span>Date of birth</span><input name="date_of_birth" placeholder="YYYY-MM-DD"></label>
+        <label><span>Gender
+          </span><select name="gender">
+            <option value="F">Female</option><option value="M">Male</option>
+            <option value="">Prefer not to say</option>
+          </select>
+        </label>
+        <label><span>Monthly income (₹)</span><input name="income_monthly"></label>
+        <label><span>Credit score <span class="tag">blank = no history</span></span><input name="credit_score"></label>
+        <label><span>Existing EMIs, % of income (DTI)</span><input name="dtir"></label>
+        <label><span>Dependents</span><input name="dependents"></label>
+        <label><span>Loan amount (₹)</span><input name="loan_amount"></label>
+        <label><span>Term (months)</span><input name="term_months"></label>
+        <label><span>Property value (₹) <span class="tag">blank = unsecured</span></span><input name="property_value"></label>
+        <label><span>Occupancy
+          </span><input name="occupancy_type" list="occ-list">
+          <datalist id="occ-list"><option value="pr">primary residence</option><option value="sr">second home</option><option value="ir">investment</option></datalist>
+        </label>
+      </div>
+
+      <details class="more">
+        <summary>More fields (used by the ML model, not by the rules)</summary>
+        <div class="grid">
+          <label><span>Credit bureau</span><input name="credit_type" value="CIB"></label>
+          <label><span>Co-applicant bureau</span><input name="co_applicant_credit_type" value="EXP"></label>
+          <label><span>Credit worthiness</span><input name="credit_worthiness" value="l1"></label>
+          <label><span>Loan type</span><input name="loan_type" value="type1"></label>
+          <label><span>Loan purpose</span><input name="loan_purpose" value="p3"></label>
+        </div>
+      </details>
+
+      <div class="actions">
+        <button type="submit" class="btn primary">Run rule layer</button>
+        <button type="button" class="btn" id="btn-clear">Clear</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ============ RIGHT: result ============ -->
+  <section class="col">
+    <div class="card" id="result-card">
+      <h2>Result</h2>
+      <div id="result">
+        <p class="empty">Pick a scenario or fill the form, then press <b>Run rule layer</b>.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ BOTTOM: rule book / tamper / history ============ -->
+<section class="bottom">
+  <div class="card">
+    <h2>Rule book <span class="muted" id="rulebook-version"></span></h2>
+    <p class="hint">Rules are rows in the database, not code. <b>Hard</b> = reject. <b>Soft</b> = send to a human.</p>
+    <div id="versions" class="versions"></div>
+    <div class="table-wrap"><table id="rulebook"></table></div>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h2>Try to tamper</h2>
+      <p class="hint">Each button runs a real UPDATE/DELETE against the database. The triggers must block it.
+        (Always rolled back, so nothing changes even if one got through.)</p>
+      <div id="tamper-buttons" class="tamper-buttons"></div>
+      <div id="tamper-log"></div>
+    </div>
+
+    <div class="card">
+      <h2>Recent applications <button class="btn small" id="btn-refresh">Refresh</button></h2>
+      <div class="table-wrap"><table id="history"></table></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  CogniLend · G12 Rules + DBMS · every check on this page is done by MySQL stored procedures and triggers
+</footer>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

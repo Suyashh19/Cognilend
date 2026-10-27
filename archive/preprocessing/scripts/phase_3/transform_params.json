@@ -1,0 +1,229 @@
+{
+  "note": "All values were calculated on the 9,847 cleaned rows (Phase 3).",
+  "category_map": {
+    "Gender": {
+      "male": "Male",
+      "m": "Male",
+      "female": "Female",
+      "f": "Female",
+      "transgender": "Transgender",
+      "tg": "Transgender"
+    },
+    "Marital_Status": {
+      "married": "Married",
+      "single": "Single",
+      "unmarried": "Single",
+      "divorced": "Divorced",
+      "widowed": "Widowed"
+    },
+    "Employment_Type": {
+      "salaried": "Salaried",
+      "service": "Salaried",
+      "self-employed professional": "SEP",
+      "self employed professional": "SEP",
+      "sep": "SEP",
+      "self-employed non-professional": "SENP",
+      "self employed business": "SENP",
+      "business owner": "SENP",
+      "senp": "SENP"
+    },
+    "Loan_Type": {
+      "home loan": "Home",
+      "housing loan": "Home",
+      "hl": "Home",
+      "vehicle loan": "Vehicle",
+      "auto loan": "Vehicle",
+      "car loan": "Vehicle",
+      "personal loan": "Personal",
+      "personal": "Personal",
+      "pl": "Personal",
+      "business loan": "Business",
+      "msme loan": "Business",
+      "bl": "Business"
+    },
+    "Property_Area": {
+      "urban": "Urban",
+      "semi-urban": "Semi-Urban",
+      "semi urban": "Semi-Urban",
+      "semiurban": "Semi-Urban",
+      "rural": "Rural"
+    }
+  },
+  "imputation_values": {
+    "Property_Area": "Urban",
+    "Dependents_by_Marital_Status": {
+      "Divorced": 0.0,
+      "Married": 2.0,
+      "Single": 0.0,
+      "Unknown": 0.0,
+      "Widowed": 0.0
+    },
+    "Age_by_Employment_Type": {
+      "SENP": 42.0,
+      "SEP": 40.0,
+      "Salaried": 35.0
+    },
+    "Work_Experience_by_Employment_Type": {
+      "SENP": 17.0,
+      "SEP": 12.0,
+      "Salaried": 12.0
+    },
+    "Existing_EMI": 0.0,
+    "CIBIL_Score": 739.0,
+    "Loan_Amount_by_Loan_Type": {
+      "Business": 630000.0,
+      "Home": 2805000.0,
+      "Personal": 370000.0,
+      "Vehicle": 420000.0
+    },
+    "Loan_Tenure_by_Loan_Type": {
+      "Business": 36.0,
+      "Home": 240.0,
+      "Personal": 36.0,
+      "Vehicle": 60.0
+    },
+    "Median_LTV_by_Loan_Type": {
+      "Home": 0.6719613831626614,
+      "Vehicle": 0.851063829787234
+    }
+  },
+  "cibil_ntc_replacement": 739,
+  "capping_1st_99th_percentile": {
+    "Monthly_Income": [
+      12700.0,
+      333479.99999999814
+    ],
+    "Coapplicant_Income": [
+      0.0,
+      103800.0
+    ],
+    "Existing_EMI": [
+      0.0,
+      59800.0
+    ],
+    "Loan_Amount": [
+      60000.0,
+      10479399.999999896
+    ],
+    "Collateral_Value": [
+      0.0,
+      16910199.999999877
+    ]
+  },
+  "log1p_columns": [
+    "Monthly_Income",
+    "Coapplicant_Income",
+    "Existing_EMI",
+    "Loan_Amount",
+    "Loan_Tenure",
+    "Collateral_Value"
+  ],
+  "scaler": {
+    "Age": {
+      "mean": 37.47537321011475,
+      "std": 8.706104788441927,
+      "log1p": false
+    },
+    "Dependents": {
+      "mean": 1.3545242205747943,
+      "std": 1.0773551949583418,
+      "log1p": false
+    },
+    "Work_Experience": {
+      "mean": 13.416979790799228,
+      "std": 8.32415453931827,
+      "log1p": false
+    },
+    "Monthly_Income": {
+      "mean": 10.951716392336568,
+      "std": 0.6763887768507639,
+      "log1p": true
+    },
+    "Coapplicant_Income": {
+      "mean": 3.3632657504255508,
+      "std": 4.900489485489814,
+      "log1p": true
+    },
+    "Existing_EMI": {
+      "mean": 3.436906485508517,
+      "std": 4.502020679142045,
+      "log1p": true
+    },
+    "CIBIL_Score": {
+      "mean": 734.8202498222809,
+      "std": 63.44867628573065,
+      "log1p": false
+    },
+    "Loan_Amount": {
+      "mean": 13.483250973038592,
+      "std": 1.2160374123477116,
+      "log1p": true
+    },
+    "Loan_Tenure": {
+      "mean": 4.168877342714426,
+      "std": 0.8606688840883316,
+      "log1p": true
+    },
+    "Collateral_Value": {
+      "mean": 8.464290921540142,
+      "std": 7.046895210669091,
+      "log1p": true
+    }
+  },
+  "encoding_one_hot": {
+    "Employment_Type": {
+      "reference": "Salaried",
+      "columns": {
+        "SEP": "emp_sep",
+        "SENP": "emp_senp"
+      }
+    },
+    "Loan_Type": {
+      "reference": "Personal",
+      "columns": {
+        "Home": "loan_type_home",
+        "Vehicle": "loan_type_vehicle",
+        "Business": "loan_type_business"
+      }
+    },
+    "Gender": {
+      "reference": "Male",
+      "columns": {
+        "Female": "gender_female",
+        "Transgender": "gender_transgender",
+        "Unknown": "gender_unknown"
+      }
+    },
+    "Marital_Status": {
+      "reference": "Married",
+      "columns": {
+        "Single": "marital_single",
+        "Divorced": "marital_divorced",
+        "Widowed": "marital_widowed",
+        "Unknown": "marital_unknown"
+      }
+    }
+  },
+  "encoding_ordinal": {
+    "Property_Area": {
+      "Rural": 0,
+      "Semi-Urban": 1,
+      "Urban": 2
+    }
+  },
+  "renamed_columns": {
+    "Loan_ID": "loan_id",
+    "Age": "age",
+    "Dependents": "dependents",
+    "Work_Experience": "work_experience",
+    "Monthly_Income": "monthly_income",
+    "Coapplicant_Income": "coapplicant_income",
+    "Existing_EMI": "existing_emi",
+    "CIBIL_Score": "cibil_score",
+    "Loan_Amount": "loan_amount",
+    "Loan_Tenure": "loan_tenure_months",
+    "Collateral_Value": "collateral_value",
+    "Property_Area": "property_area",
+    "Loan_Status": "loan_status"
+  }
+}
