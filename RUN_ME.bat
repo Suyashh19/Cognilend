@@ -25,6 +25,12 @@ if not exist "artifacts\models\dt_v1.joblib" (
   ".venv\Scripts\python.exe" scripts\seed_demo.py || goto :fail
 )
 
+if not exist "artifacts\models\benchmark_models.joblib" (
+  echo Running the model comparison and confidence step ^(first run only, a few minutes^)...
+  ".venv\Scripts\python.exe" -m cognilend.ml.benchmark || goto :fail
+  ".venv\Scripts\python.exe" -m cognilend.ml.confidence || goto :fail
+)
+
 echo [2/2] Starting CogniLend at http://localhost:8501 ^(close this window to stop^)
 ".venv\Scripts\python.exe" -m streamlit run app\streamlit_app.py
 exit /b 0

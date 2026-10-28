@@ -55,7 +55,8 @@ with form_tab:
                'Coapplicant_Income': coapp or None, 'Existing_EMI': emi, 'CIBIL_Score': -1 if ntc else cibil,
                'Loan_Type': loan_type, 'Loan_Amount': amount, 'Loan_Tenure': tenure,
                'Collateral_Value': collateral or None, 'Property_Area': area}
-        st.session_state['result'] = common.pipeline().decide({k: v for k, v in app.items() if v is not None})
+        st.session_state['last_app'] = {k: v for k, v in app.items() if v is not None}
+        st.session_state['result'] = common.pipeline().decide(st.session_state['last_app'])
 
 with json_tab:
     raw = st.text_area('Application JSON', value=json.dumps(demo.clean(demo.CASES['malformed'][1][0]), indent=1),
@@ -67,6 +68,7 @@ with json_tab:
             payload = None
             st.error(f'Not valid JSON: {e}')
         if payload is not None:
+            st.session_state['last_app'] = payload if isinstance(payload, dict) else None
             st.session_state['result'] = common.pipeline().decide(payload)
 
 if 'result' in st.session_state:
@@ -74,3 +76,14 @@ if 'result' in st.session_state:
     common.decision_card(st.session_state['result'])
     from components.max_amount_panel import render_max_amount_panel  # noqa: E402
     render_max_amount_panel(st.session_state['result'])
+
+    from cognilend.ml import compare  # noqa: E402
+    if st.session_state['result'].get('model_version') and st.session_state.get('last_app') and compare.available():
+        with st.expander('Other models (advisory only, not used for the decision)'):
+            try:
+                st.dataframe(compare.advise(common.pipeline().explainer, st.session_state['last_app']),
+                             hide_index=True, width='stretch')
+                st.caption('The decision above is made by the decision tree because only its rule path is a readable, '
+                           'auditable reason. These predictions are not stored in the audit log.')
+            except Exception as e:  # noqa: BLE001 - advisory panel must never break the decision page
+                st.caption(f'Advisory models unavailable: {e}')

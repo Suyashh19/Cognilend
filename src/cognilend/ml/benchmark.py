@@ -10,6 +10,7 @@ from __future__ import annotations
 import itertools
 import json
 
+import joblib
 import numpy as np
 import pandas as pd
 from sklearn.base import clone
@@ -107,6 +108,10 @@ def run() -> dict:
     params['decision_tree'] = dt['params']
     md = render(table, params, s)
     (out / 'benchmark.md').write_text(md, encoding='utf-8')
+    # advisory comparison models for the app (the decision tree stays the only decision-maker)
+    joblib.dump({'features': list(data['train']['X'].columns),
+                 'models': {n: m for n, m in models.items() if n != 'decision_tree'}},
+                tree.model_path().with_name('benchmark_models.joblib'))
     return {'table': table, 'params': params, 'markdown': md, 'test_ids': ref}
 
 
