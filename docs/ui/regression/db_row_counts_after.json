@@ -1,0 +1,12 @@
+{
+ "applicants": 1478,
+ "audit_log": 1482,
+ "decisions": 1478,
+ "fairness_reports": 0,
+ "loan_locks": 476,
+ "loans": 1478,
+ "model_registry": 3,
+ "policy_versions": 1,
+ "review_queue": 445,
+ "rule_results": 15521
+}

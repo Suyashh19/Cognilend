@@ -1,0 +1,354 @@
+{
+ "demo_hard_reject__1920_light": {
+  "load_seconds": 11.33,
+  "horizontal_overflow": false
+ },
+ "demo_auto_approve__1920_light": {
+  "load_seconds": 6.11,
+  "horizontal_overflow": false
+ },
+ "max_amount_possible__1920_light": {
+  "load_seconds": 4.58,
+  "horizontal_overflow": false
+ },
+ "home__1920_light": {
+  "load_seconds": 4.57,
+  "horizontal_overflow": false
+ },
+ "review_queue__1920_light": {
+  "load_seconds": 3.52,
+  "horizontal_overflow": false
+ },
+ "audit_explorer__1920_light": {
+  "load_seconds": 2.21,
+  "horizontal_overflow": false
+ },
+ "model_and_policy__1920_light": {
+  "load_seconds": 4.29,
+  "horizontal_overflow": false
+ },
+ "fairness_dashboard__1920_light": {
+  "load_seconds": 2.01,
+  "horizontal_overflow": false
+ },
+ "stress_twin__1920_light": {
+  "load_seconds": 2.1,
+  "horizontal_overflow": false
+ },
+ "model_comparison__1920_light": {
+  "load_seconds": 2.21,
+  "horizontal_overflow": false
+ },
+ "new_application_form__1920_light": {
+  "load_seconds": 2.0,
+  "horizontal_overflow": false
+ },
+ "demo_hard_reject__1366_light": {
+  "load_seconds": 2.34,
+  "horizontal_overflow": false
+ },
+ "demo_auto_approve__1366_light": {
+  "load_seconds": 2.33,
+  "horizontal_overflow": false
+ },
+ "max_amount_possible__1366_light": {
+  "load_seconds": 2.08,
+  "horizontal_overflow": false
+ },
+ "home__1366_light": {
+  "load_seconds": 1.86,
+  "horizontal_overflow": false
+ },
+ "review_queue__1366_light": {
+  "load_seconds": 1.99,
+  "horizontal_overflow": false
+ },
+ "audit_explorer__1366_light": {
+  "load_seconds": 1.97,
+  "horizontal_overflow": false
+ },
+ "model_and_policy__1366_light": {
+  "load_seconds": 2.3,
+  "horizontal_overflow": false
+ },
+ "fairness_dashboard__1366_light": {
+  "load_seconds": 2.24,
+  "horizontal_overflow": false
+ },
+ "stress_twin__1366_light": {
+  "load_seconds": 2.04,
+  "horizontal_overflow": false
+ },
+ "model_comparison__1366_light": {
+  "load_seconds": 2.19,
+  "horizontal_overflow": false
+ },
+ "new_application_form__1366_light": {
+  "load_seconds": 2.04,
+  "horizontal_overflow": false
+ },
+ "demo_hard_reject__1024_light": {
+  "load_seconds": 2.33,
+  "horizontal_overflow": false
+ },
+ "demo_auto_approve__1024_light": {
+  "load_seconds": 2.32,
+  "horizontal_overflow": false
+ },
+ "max_amount_possible__1024_light": {
+  "load_seconds": 2.01,
+  "horizontal_overflow": false
+ },
+ "home__1024_light": {
+  "load_seconds": 1.86,
+  "horizontal_overflow": false
+ },
+ "review_queue__1024_light": {
+  "load_seconds": 1.97,
+  "horizontal_overflow": false
+ },
+ "audit_explorer__1024_light": {
+  "load_seconds": 1.94,
+  "horizontal_overflow": false
+ },
+ "model_and_policy__1024_light": {
+  "load_seconds": 2.25,
+  "horizontal_overflow": false
+ },
+ "fairness_dashboard__1024_light": {
+  "load_seconds": 2.28,
+  "horizontal_overflow": false
+ },
+ "stress_twin__1024_light": {
+  "load_seconds": 2.1,
+  "horizontal_overflow": false
+ },
+ "model_comparison__1024_light": {
+  "load_seconds": 2.18,
+  "horizontal_overflow": false
+ },
+ "new_application_form__1024_light": {
+  "load_seconds": 2.07,
+  "horizontal_overflow": false
+ },
+ "demo_hard_reject__390_light": {
+  "load_seconds": 2.35,
+  "horizontal_overflow": false
+ },
+ "demo_auto_approve__390_light": {
+  "load_seconds": 2.38,
+  "horizontal_overflow": false
+ },
+ "max_amount_possible__390_light": {
+  "load_seconds": 1.62,
+  "horizontal_overflow": false
+ },
+ "home__390_light": {
+  "load_seconds": 1.87,
+  "horizontal_overflow": false
+ },
+ "review_queue__390_light": {
+  "load_seconds": 1.96,
+  "horizontal_overflow": false
+ },
+ "audit_explorer__390_light": {
+  "load_seconds": 1.94,
+  "horizontal_overflow": false
+ },
+ "model_and_policy__390_light": {
+  "load_seconds": 2.25,
+  "horizontal_overflow": false
+ },
+ "fairness_dashboard__390_light": {
+  "load_seconds": 2.21,
+  "horizontal_overflow": false
+ },
+ "stress_twin__390_light": {
+  "load_seconds": 2.04,
+  "horizontal_overflow": false
+ },
+ "model_comparison__390_light": {
+  "load_seconds": 2.2,
+  "horizontal_overflow": false
+ },
+ "new_application_form__390_light": {
+  "load_seconds": 2.0,
+  "horizontal_overflow": false
+ },
+ "demo_hard_reject__1920_dark": {
+  "load_seconds": 4.2,
+  "horizontal_overflow": false
+ },
+ "demo_auto_approve__1920_dark": {
+  "load_seconds": 2.82,
+  "horizontal_overflow": false
+ },
+ "max_amount_possible__1920_dark": {
+  "load_seconds": 1.99,
+  "horizontal_overflow": false
+ },
+ "home__1920_dark": {
+  "load_seconds": 1.82,
+  "horizontal_overflow": false
+ },
+ "review_queue__1920_dark": {
+  "load_seconds": 1.94,
+  "horizontal_overflow": false
+ },
+ "audit_explorer__1920_dark": {
+  "load_seconds": 1.95,
+  "horizontal_overflow": false
+ },
+ "model_and_policy__1920_dark": {
+  "load_seconds": 2.35,
+  "horizontal_overflow": false
+ },
+ "fairness_dashboard__1920_dark": {
+  "load_seconds": 1.97,
+  "horizontal_overflow": false
+ },
+ "stress_twin__1920_dark": {
+  "load_seconds": 1.53,
+  "horizontal_overflow": false
+ },
+ "model_comparison__1920_dark": {
+  "load_seconds": 2.19,
+  "horizontal_overflow": false
+ },
+ "new_application_form__1920_dark": {
+  "load_seconds": 2.01,
+  "horizontal_overflow": false
+ },
+ "demo_hard_reject__1366_dark": {
+  "load_seconds": 2.33,
+  "horizontal_overflow": false
+ },
+ "demo_auto_approve__1366_dark": {
+  "load_seconds": 2.33,
+  "horizontal_overflow": false
+ },
+ "max_amount_possible__1366_dark": {
+  "load_seconds": 2.04,
+  "horizontal_overflow": false
+ },
+ "home__1366_dark": {
+  "load_seconds": 1.89,
+  "horizontal_overflow": false
+ },
+ "review_queue__1366_dark": {
+  "load_seconds": 1.92,
+  "horizontal_overflow": false
+ },
+ "audit_explorer__1366_dark": {
+  "load_seconds": 2.02,
+  "horizontal_overflow": false
+ },
+ "model_and_policy__1366_dark": {
+  "load_seconds": 2.27,
+  "horizontal_overflow": false
+ },
+ "fairness_dashboard__1366_dark": {
+  "load_seconds": 2.28,
+  "horizontal_overflow": false
+ },
+ "stress_twin__1366_dark": {
+  "load_seconds": 2.07,
+  "horizontal_overflow": false
+ },
+ "model_comparison__1366_dark": {
+  "load_seconds": 2.19,
+  "horizontal_overflow": false
+ },
+ "new_application_form__1366_dark": {
+  "load_seconds": 2.03,
+  "horizontal_overflow": false
+ },
+ "demo_hard_reject__1024_dark": {
+  "load_seconds": 2.34,
+  "horizontal_overflow": false
+ },
+ "demo_auto_approve__1024_dark": {
+  "load_seconds": 2.27,
+  "horizontal_overflow": false
+ },
+ "max_amount_possible__1024_dark": {
+  "load_seconds": 2.02,
+  "horizontal_overflow": false
+ },
+ "home__1024_dark": {
+  "load_seconds": 1.87,
+  "horizontal_overflow": false
+ },
+ "review_queue__1024_dark": {
+  "load_seconds": 1.48,
+  "horizontal_overflow": false
+ },
+ "audit_explorer__1024_dark": {
+  "load_seconds": 1.98,
+  "horizontal_overflow": false
+ },
+ "model_and_policy__1024_dark": {
+  "load_seconds": 2.3,
+  "horizontal_overflow": false
+ },
+ "fairness_dashboard__1024_dark": {
+  "load_seconds": 2.23,
+  "horizontal_overflow": false
+ },
+ "stress_twin__1024_dark": {
+  "load_seconds": 2.06,
+  "horizontal_overflow": false
+ },
+ "model_comparison__1024_dark": {
+  "load_seconds": 2.22,
+  "horizontal_overflow": false
+ },
+ "new_application_form__1024_dark": {
+  "load_seconds": 2.01,
+  "horizontal_overflow": false
+ },
+ "demo_hard_reject__390_dark": {
+  "load_seconds": 2.32,
+  "horizontal_overflow": false
+ },
+ "demo_auto_approve__390_dark": {
+  "load_seconds": 2.34,
+  "horizontal_overflow": false
+ },
+ "max_amount_possible__390_dark": {
+  "load_seconds": 2.05,
+  "horizontal_overflow": false
+ },
+ "home__390_dark": {
+  "load_seconds": 1.88,
+  "horizontal_overflow": false
+ },
+ "review_queue__390_dark": {
+  "load_seconds": 1.94,
+  "horizontal_overflow": false
+ },
+ "audit_explorer__390_dark": {
+  "load_seconds": 2.01,
+  "horizontal_overflow": false
+ },
+ "model_and_policy__390_dark": {
+  "load_seconds": 2.33,
+  "horizontal_overflow": false
+ },
+ "fairness_dashboard__390_dark": {
+  "load_seconds": 2.33,
+  "horizontal_overflow": false
+ },
+ "stress_twin__390_dark": {
+  "load_seconds": 2.1,
+  "horizontal_overflow": false
+ },
+ "model_comparison__390_dark": {
+  "load_seconds": 2.21,
+  "horizontal_overflow": false
+ },
+ "new_application_form__390_dark": {
+  "load_seconds": 2.04,
+  "horizontal_overflow": false
+ }
+}

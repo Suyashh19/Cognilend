@@ -1,0 +1,70 @@
+{
+ "demo_hard_reject": {
+  "load_seconds": 5.7,
+  "horizontal_overflow": false
+ },
+ "demo_auto_approve": {
+  "load_seconds": 2.42,
+  "horizontal_overflow": false
+ },
+ "demo_auto_reject": {
+  "load_seconds": 3.18,
+  "horizontal_overflow": false
+ },
+ "demo_soft_review": {
+  "load_seconds": 2.98,
+  "horizontal_overflow": false
+ },
+ "demo_low_confidence": {
+  "load_seconds": 3.18,
+  "horizontal_overflow": false
+ },
+ "demo_lock": {
+  "load_seconds": 2.94,
+  "horizontal_overflow": false
+ },
+ "demo_malformed": {
+  "load_seconds": 1.87,
+  "horizontal_overflow": false
+ },
+ "max_amount_possible": {
+  "load_seconds": 2.43,
+  "horizontal_overflow": false
+ },
+ "max_amount_not_possible": {
+  "load_seconds": 2.98,
+  "horizontal_overflow": false
+ },
+ "home": {
+  "load_seconds": 2.38,
+  "horizontal_overflow": false
+ },
+ "review_queue": {
+  "load_seconds": 2.72,
+  "horizontal_overflow": false
+ },
+ "audit_explorer": {
+  "load_seconds": 2.64,
+  "horizontal_overflow": false
+ },
+ "model_and_policy": {
+  "load_seconds": 3.13,
+  "horizontal_overflow": false
+ },
+ "fairness_dashboard": {
+  "load_seconds": 3.05,
+  "horizontal_overflow": false
+ },
+ "stress_twin": {
+  "load_seconds": 2.66,
+  "horizontal_overflow": false
+ },
+ "model_comparison": {
+  "load_seconds": 2.81,
+  "horizontal_overflow": false
+ },
+ "new_application_form": {
+  "load_seconds": 4.06,
+  "horizontal_overflow": false
+ }
+}

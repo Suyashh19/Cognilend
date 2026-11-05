@@ -1,0 +1,4 @@
+*.csv -text
+*.sha256 -text
+*.json -text
+*.png binary

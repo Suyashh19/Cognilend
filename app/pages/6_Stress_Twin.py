@@ -8,6 +8,8 @@ import streamlit as st  # noqa: E402
 
 import common  # noqa: E402
 from cognilend.stress_twin.simulator import StressInputs, alternatives, cfg, simulate  # noqa: E402
+from ui import components as ui  # noqa: E402
+from ui import format as fmt  # noqa: E402
 
 common.setup('Stress Twin (advisory)')
 c = cfg()
@@ -15,32 +17,42 @@ st.warning('Advisory panel only: it never changes the Approved / Rejected / Huma
            'shock sizes and the resilience formula are **illustrative, to be calibrated**.')
 
 with st.form('stress_form'):
+    st.html('<h4 style="margin:0">Income and spending</h4>')
     a, b, d, e = st.columns(4)
-    income = a.number_input('Monthly income mean (₹)', 0, 10_000_000, 80_000, step=1000)
+    income = a.number_input('Monthly income mean (₹)', 0, 10_000_000, 80_000, step=1000,
+                            help='Average monthly income in rupees.')
     cv = b.number_input('Income variability CV (σ/μ)', 0.0, 2.0, 0.15, step=0.05,
                         help='Relative month-to-month income variability used by the simulation.')
     income_day = d.number_input('Income credit day', 1, 28, 1,
                                 help='Day on which income is assumed to arrive.')
     essentials = e.number_input('Essential expenses (₹/month)', 0, 10_000_000, 35_000, step=1000,
                                 help='Recurring essential spending, excluding EMIs.')
+    st.html('<h4 style="margin:8px 0 0 0">Loan and buffer</h4>')
     a, b, d, e = st.columns(4)
     existing = a.number_input('Existing EMIs (₹/month)', 0, 10_000_000, 5_000, step=500)
     amount = b.number_input('Proposed loan amount (₹)', 0, 1_000_000_000, 1_500_000, step=10000)
-    rate = d.number_input('Annual interest rate', 0.0, 0.5, 0.105, step=0.005, format='%.3f')
+    rate = d.number_input('Annual interest rate', 0.0, 0.5, 0.105, step=0.005, format='%.3f',
+                          help='As a fraction: 0.105 = 10.5% a year.')
     tenure = e.number_input('Tenure (months)', 1, 360, 60)
     a, b = st.columns(2)
     due = a.number_input('EMI due day', 1, 28, 5)
     savings = b.number_input('Liquid savings (₹)', 0, 1_000_000_000, 60_000, step=5000,
                              help='Cash buffer available at the start of the simulation.')
-    go = st.form_submit_button('Run stress test', type='primary')
+    go = st.form_submit_button('Run stress test', type='primary', icon=':material/play_arrow:')
 
 if go or 'stress' not in st.session_state:
     inp = StressInputs(income_mean=income, income_cv=cv, income_day=income_day, essentials=essentials,
                        existing_emi=existing, loan_amount=amount, annual_rate=rate, tenure_months=tenure,
                        emi_due_day=due, savings=savings)
-    st.session_state['stress'] = (simulate(inp), alternatives(inp))
+    with st.spinner('Simulating cash-flow paths…'):
+        st.session_state['stress'] = (simulate(inp), alternatives(inp))
 res, alts = st.session_state['stress']
 
+band_kind = {'Resilient': 'approve', 'Vulnerable': 'review'}.get(res['band'], 'reject')
+st.html(f'<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px">'
+        f'<span class="cl-badge {band_kind}"><span class="cl-ico" aria-hidden="true">'
+        f'{ui.KIND_ICON[band_kind]}</span>{ui.esc(res["band"])}</span>'
+        f'<span class="cl-tile-help">Resilience score (illustrative)</span></div>')
 st.subheader(f'{res["band"]}  ·  resilience {res["resilience"]} / 100 (illustrative)')
 st.caption(f'{c["n_paths"]} Monte Carlo paths per scenario, {c["horizon_months"]}-month horizon, seed {c["seed"]}. '
            f'Bands on the {c["headline_scenario"]} scenario: < {c["bands"]["resilient_below"]:.0%} Resilient, '
@@ -50,9 +62,10 @@ if res['missing']:
     st.error('Insufficient data: ' + ', '.join(res['missing']))
 else:
     m1, m2, m3 = st.columns(3)
-    m1.metric('Total EMI after loan', f'₹{res["total_emi"]:,.0f}')
-    m2.metric('Buffer coverage', f'{res["buffer_coverage_months"]:.1f} months')
-    m3.metric('Headline shortfall probability', f'{res["scenarios"][res["headline"]]["shortfall_probability"]:.1%}')
+    m1.metric('Total EMI after loan', fmt.rupee(res['total_emi']), border=True)
+    m2.metric('Buffer coverage', f'{res["buffer_coverage_months"]:.1f} months', border=True)
+    m3.metric('Headline shortfall probability', f'{res["scenarios"][res["headline"]]["shortfall_probability"]:.1%}',
+              border=True)
     table = pd.DataFrame(res['scenarios']).T
     table.columns = ['min balance p5 (₹)', 'min balance median (₹)', 'shortfall probability', 'max shortfall (₹)',
                      'months in deficit (mean)', 'recovery time (months)', 'stressed FOIR (median)']
@@ -60,3 +73,4 @@ else:
     if res['band'] != 'Resilient':
         st.markdown('**Alternative terms** (headline scenario)')
         st.dataframe(pd.DataFrame(alts), hide_index=True, width='stretch')
+common.footer()
