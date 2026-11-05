@@ -36,7 +36,7 @@ SUBTITLES = {
 
 PROJECT = {'college': 'Walchand College of Engineering, Sangli', 'programme': 'TY AIML Mini Project · AY 2026-27',
            'initiative': 'Apni Leap Initiative', 'guide': 'Dr. V. N. Waghmare',
-           'groups': 'G10 Core ML · G12 Rules + DBMS · G15 Fairness + Integration'}
+           'groups': 'G10 Core ML · G12 Rules + DBMS · G15 Data collection/creation + Preprocessing + Fairness'}
 
 
 @st.cache_resource
