@@ -1,0 +1,1145 @@
+{
+ "demo_hard_reject": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Age": 20,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 1,
+     "Monthly_Income": 150000,
+     "Existing_EMI": 0,
+     "CIBIL_Score": 800,
+     "Loan_Type": "Home",
+     "Loan_Amount": 3000000,
+     "Loan_Tenure": 240,
+     "Collateral_Value": 5000000,
+     "Property_Area": "Urban",
+     "Loan_ID": "DEMO-HARD",
+     "Applicant_ID": "DEMO-A1"
+    },
+    "batch_id": "demo",
+    "result": {
+     "decision": "Rejected",
+     "confidence": 1.0,
+     "confidence_ci": null,
+     "reason": "R01 minimum age: applicant is 20, minimum is 21",
+     "source": "RULE",
+     "fired_rules": [
+      "R01"
+     ],
+     "audit_log_id": 1491,
+     "loan_id": "DEMO-HARD",
+     "applicant_id": "DEMO-A1",
+     "model_version": null,
+     "policy_version": "v1",
+     "leaf": null,
+     "leaf_support": null,
+     "invalid_fields": []
+    }
+   },
+   {
+    "call": "find_max_approvable_amount",
+    "args": {
+     "Age": 20,
+     "Applicant_ID": "DEMO-A1",
+     "CIBIL_Score": 800,
+     "Collateral_Value": 5000000,
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Existing_EMI": 0,
+     "Gender": "Female",
+     "Loan_Amount": 3000000,
+     "Loan_ID": "DEMO-HARD",
+     "Loan_Tenure": 240,
+     "Loan_Type": "Home",
+     "Marital_Status": "Married",
+     "Monthly_Income": 150000,
+     "Property_Area": "Urban",
+     "Work_Experience": 1
+    },
+    "result": {
+     "applicable": true,
+     "requested_amount": 3000000.0,
+     "tenure_months": 240.0,
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "original_reason": "R01 minimum age: applicant is 20, minimum is 21",
+     "blocking_rule": "R01",
+     "candidates_checked": 0,
+     "possible": false,
+     "max_amount": null,
+     "emi_at_max": null,
+     "confidence_at_max": null,
+     "binding_limit": "RULE:R01",
+     "explanation": "No lower amount can be approved: rule R01 does not depend on the loan amount (R01 minimum age: applicant is 20, minimum is 21).",
+     "tree_path_at_max": null
+    }
+   }
+  ]
+ },
+ "demo_auto_approve": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Age": 35,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 10,
+     "Monthly_Income": 150000,
+     "Existing_EMI": 0,
+     "CIBIL_Score": 800,
+     "Loan_Type": "Home",
+     "Loan_Amount": 3000000,
+     "Loan_Tenure": 240,
+     "Collateral_Value": 5000000,
+     "Property_Area": "Urban",
+     "Loan_ID": "DEMO-APPROVE",
+     "Applicant_ID": "DEMO-A2"
+    },
+    "batch_id": "demo",
+    "result": {
+     "decision": "Approved",
+     "confidence": 0.9672006102212052,
+     "confidence_ci": [
+      0.9587272823713685,
+      0.9748641300988081
+     ],
+     "reason": "Approved (confidence 0.97, leaf of 1309 past applicants) because CIBIL 800 > 742 and FOIR 0.174 <= 0.458 and CIBIL 800 > 777.",
+     "source": "MODEL",
+     "fired_rules": [],
+     "audit_log_id": 1492,
+     "loan_id": "DEMO-APPROVE",
+     "applicant_id": "DEMO-A2",
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "leaf": 12,
+     "leaf_support": 1309,
+     "invalid_fields": []
+    }
+   }
+  ]
+ },
+ "demo_auto_reject": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Age": 35,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 10,
+     "Monthly_Income": 120000,
+     "Existing_EMI": 35000,
+     "CIBIL_Score": 700,
+     "Loan_Type": "Personal",
+     "Loan_Amount": 500000,
+     "Loan_Tenure": 36,
+     "Property_Area": "Urban",
+     "Loan_ID": "DEMO-REJECT",
+     "Applicant_ID": "DEMO-A3"
+    },
+    "batch_id": "demo",
+    "result": {
+     "decision": "Rejected",
+     "confidence": 0.8542817679558011,
+     "confidence_ci": [
+      0.8387619892632074,
+      0.8692450302265415
+     ],
+     "reason": "Rejected (confidence 0.85, leaf of 1446 past applicants) because CIBIL 700 <= 742 and FOIR 0.429 > 0.390.",
+     "source": "MODEL",
+     "fired_rules": [],
+     "audit_log_id": 1493,
+     "loan_id": "DEMO-REJECT",
+     "applicant_id": "DEMO-A3",
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "leaf": 4,
+     "leaf_support": 1446,
+     "invalid_fields": []
+    }
+   },
+   {
+    "call": "find_max_approvable_amount",
+    "args": {
+     "Age": 35,
+     "Applicant_ID": "DEMO-A3",
+     "CIBIL_Score": 700,
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Existing_EMI": 35000,
+     "Gender": "Female",
+     "Loan_Amount": 500000,
+     "Loan_ID": "DEMO-REJECT",
+     "Loan_Tenure": 36,
+     "Loan_Type": "Personal",
+     "Marital_Status": "Married",
+     "Monthly_Income": 120000,
+     "Property_Area": "Urban",
+     "Work_Experience": 10
+    },
+    "result": {
+     "applicable": true,
+     "requested_amount": 500000.0,
+     "tenure_months": 36.0,
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "original_reason": "Rejected (confidence 0.85, leaf of 1446 past applicants) because CIBIL 700 <= 742 and FOIR 0.429 > 0.390.",
+     "blocking_rule": null,
+     "candidates_checked": 45,
+     "lower_bound": 50000.0,
+     "upper_bound": 490000,
+     "max_amount_foir": 1122027.9227981095,
+     "max_amount_ltv": null,
+     "possible": false,
+     "max_amount": null,
+     "emi_at_max": null,
+     "confidence_at_max": null,
+     "binding_limit": "MODEL",
+     "explanation": "No lower amount can be approved: no amount down to \u20b950,000 is auto-approved; the model blocks it (Low model confidence (0.63; leaf support 908) - routed to human review. Model recommendation: Approved (confidence 0.63, leaf of 908 past applicants) because CIBIL 700 <= 742 and FOIR 0.305 <= 0.390 and CIBIL 700 > 686 and work experience 10.0 yrs <= 12.9 yrs.).",
+     "tree_path_at_max": null
+    }
+   }
+  ]
+ },
+ "demo_soft_review": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Age": 35,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 10,
+     "Monthly_Income": 150000,
+     "Existing_EMI": 0,
+     "CIBIL_Score": -1,
+     "Loan_Type": "Home",
+     "Loan_Amount": 3000000,
+     "Loan_Tenure": 240,
+     "Collateral_Value": 5000000,
+     "Property_Area": "Urban",
+     "Loan_ID": "DEMO-SOFT",
+     "Applicant_ID": "DEMO-A4"
+    },
+    "batch_id": "demo",
+    "result": {
+     "decision": "Human Review",
+     "confidence": 0.6307692307692307,
+     "confidence_ci": [
+      0.6043048543722369,
+      0.6569066314133318
+     ],
+     "reason": "S01 new to credit: no bureau history (CIBIL -1); verify income and banking behaviour manually. Model recommendation: Approved (confidence 0.63, leaf of 908 past applicants) because CIBIL n/a (new to credit; median 735 used) <= 742 and FOIR 0.174 <= 0.390 and CIBIL n/a (new to credit; median 735 used) > 686 and work experience 10.0 yrs <= 12.9 yrs.",
+     "source": "RULE",
+     "fired_rules": [
+      "S01"
+     ],
+     "audit_log_id": 1494,
+     "loan_id": "DEMO-SOFT",
+     "applicant_id": "DEMO-A4",
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "leaf": 9,
+     "leaf_support": 908,
+     "invalid_fields": []
+    }
+   }
+  ]
+ },
+ "demo_low_confidence": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Age": 35,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 5,
+     "Monthly_Income": 80000,
+     "Existing_EMI": 0,
+     "CIBIL_Score": 720,
+     "Loan_Type": "Personal",
+     "Loan_Amount": 300000,
+     "Loan_Tenure": 36,
+     "Property_Area": "Urban",
+     "Loan_ID": "DEMO-LOWCONF",
+     "Applicant_ID": "DEMO-A5"
+    },
+    "batch_id": "demo",
+    "result": {
+     "decision": "Human Review",
+     "confidence": 0.6307692307692307,
+     "confidence_ci": [
+      0.6043048543722369,
+      0.6569066314133318
+     ],
+     "reason": "Low model confidence (0.63; leaf support 908) - routed to human review. Model recommendation: Approved (confidence 0.63, leaf of 908 past applicants) because CIBIL 720 <= 742 and FOIR 0.124 <= 0.390 and CIBIL 720 > 686 and work experience 5.0 yrs <= 12.9 yrs.",
+     "source": "MODEL",
+     "fired_rules": [],
+     "audit_log_id": 1495,
+     "loan_id": "DEMO-LOWCONF",
+     "applicant_id": "DEMO-A5",
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "leaf": 9,
+     "leaf_support": 908,
+     "invalid_fields": []
+    }
+   }
+  ]
+ },
+ "demo_lock": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Age": 35,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 10,
+     "Monthly_Income": 150000,
+     "Existing_EMI": 0,
+     "CIBIL_Score": 800,
+     "Loan_Type": "Home",
+     "Loan_Amount": 3000000,
+     "Loan_Tenure": 240,
+     "Collateral_Value": 5000000,
+     "Property_Area": "Urban",
+     "Loan_ID": "DEMO-LOCK-1",
+     "Applicant_ID": "DEMO-A6",
+     "Collateral_ID": "DEMO-FLAT-101"
+    },
+    "batch_id": "demo",
+    "result": {
+     "decision": "Approved",
+     "confidence": 0.9672006102212052,
+     "confidence_ci": [
+      0.9587272823713685,
+      0.9748641300988081
+     ],
+     "reason": "Approved (confidence 0.97, leaf of 1309 past applicants) because CIBIL 800 > 742 and FOIR 0.174 <= 0.458 and CIBIL 800 > 777.",
+     "source": "MODEL",
+     "fired_rules": [],
+     "audit_log_id": 1496,
+     "loan_id": "DEMO-LOCK-1",
+     "applicant_id": "DEMO-A6",
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "leaf": 12,
+     "leaf_support": 1309,
+     "invalid_fields": []
+    }
+   },
+   {
+    "call": "decide",
+    "args": {
+     "Age": 35,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 10,
+     "Monthly_Income": 150000,
+     "Existing_EMI": 0,
+     "CIBIL_Score": 800,
+     "Loan_Type": "Home",
+     "Loan_Amount": 3000000,
+     "Loan_Tenure": 240,
+     "Collateral_Value": 5000000,
+     "Property_Area": "Urban",
+     "Loan_ID": "DEMO-LOCK-2",
+     "Applicant_ID": "DEMO-A7",
+     "Collateral_ID": "DEMO-FLAT-101"
+    },
+    "batch_id": "demo",
+    "result": {
+     "decision": "Human Review",
+     "confidence": 0.9672006102212052,
+     "confidence_ci": [
+      0.9587272823713685,
+      0.9748641300988081
+     ],
+     "reason": "Lock (FR-10): collateral DEMO-FLAT-101 already has an approved active loan DEMO-LOCK-1. Second approval blocked; sent to human review. Model recommendation: Approved (confidence 0.97, leaf of 1309 past applicants) because CIBIL 800 > 742 and FOIR 0.174 <= 0.458 and CIBIL 800 > 777.",
+     "source": "RULE",
+     "fired_rules": [],
+     "audit_log_id": 1497,
+     "loan_id": "DEMO-LOCK-2",
+     "applicant_id": "DEMO-A7",
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "leaf": 12,
+     "leaf_support": 1309,
+     "invalid_fields": []
+    }
+   }
+  ]
+ },
+ "demo_malformed": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Age": 999,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 10,
+     "Monthly_Income": "abc",
+     "Existing_EMI": 0,
+     "CIBIL_Score": 800,
+     "Loan_Type": "Home",
+     "Loan_Amount": 3000000,
+     "Loan_Tenure": 240,
+     "Collateral_Value": 5000000,
+     "Property_Area": "Urban",
+     "Loan_ID": "DEMO-BAD",
+     "Applicant_ID": "DEMO-A8"
+    },
+    "batch_id": "demo",
+    "result": {
+     "decision": "Rejected",
+     "confidence": 1.0,
+     "confidence_ci": null,
+     "reason": "invalid input: Monthly_Income: could not parse 'abc'; invalid input: Age: 999 outside the valid range [18, 75] years",
+     "source": "RULE",
+     "fired_rules": [
+      "INPUT"
+     ],
+     "audit_log_id": 1498,
+     "loan_id": "DEMO-BAD",
+     "applicant_id": "DEMO-A8",
+     "model_version": null,
+     "policy_version": "v1",
+     "leaf": null,
+     "leaf_support": null,
+     "invalid_fields": [
+      "Monthly_Income",
+      "Age"
+     ]
+    }
+   },
+   {
+    "call": "find_max_approvable_amount",
+    "args": {
+     "Age": 999,
+     "Applicant_ID": "DEMO-A8",
+     "CIBIL_Score": 800,
+     "Collateral_Value": 5000000,
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Existing_EMI": 0,
+     "Gender": "Female",
+     "Loan_Amount": 3000000,
+     "Loan_ID": "DEMO-BAD",
+     "Loan_Tenure": 240,
+     "Loan_Type": "Home",
+     "Marital_Status": "Married",
+     "Monthly_Income": "abc",
+     "Property_Area": "Urban",
+     "Work_Experience": 10
+    },
+    "result": {
+     "applicable": true,
+     "requested_amount": null,
+     "tenure_months": null,
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "original_reason": "invalid input: Monthly_Income: could not parse 'abc'; invalid input: Age: 999 outside the valid range [18, 75] years",
+     "blocking_rule": "INPUT",
+     "candidates_checked": 0,
+     "possible": false,
+     "max_amount": null,
+     "emi_at_max": null,
+     "confidence_at_max": null,
+     "binding_limit": "RULE:INPUT",
+     "explanation": "No lower amount can be approved: the application has invalid input (invalid input: Monthly_Income: could not parse 'abc'; invalid input: Age: 999 outside the valid range [18, 75] years). Correct the input and apply again.",
+     "tree_path_at_max": null
+    }
+   }
+  ]
+ },
+ "form_defaults": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Age": 35,
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 10,
+     "Monthly_Income": 150000,
+     "Existing_EMI": 0,
+     "CIBIL_Score": 780,
+     "Loan_Type": "Home",
+     "Loan_Amount": 3000000,
+     "Loan_Tenure": 240,
+     "Collateral_Value": 5000000,
+     "Property_Area": "Urban"
+    },
+    "batch_id": null,
+    "result": {
+     "decision": "Approved",
+     "confidence": 0.9672006102212052,
+     "confidence_ci": [
+      0.9587272823713685,
+      0.9748641300988081
+     ],
+     "reason": "Approved (confidence 0.97, leaf of 1309 past applicants) because CIBIL 780 > 742 and FOIR 0.174 <= 0.458 and CIBIL 780 > 777.",
+     "source": "MODEL",
+     "fired_rules": [],
+     "audit_log_id": 1499,
+     "loan_id": "LN-c56d878616c7475d",
+     "applicant_id": "APP-LN-c56d878616c7475d",
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "leaf": 12,
+     "leaf_support": 1309,
+     "invalid_fields": []
+    }
+   }
+  ]
+ },
+ "form_hard_reject": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Loan_ID": "DEMO-HARD",
+     "Applicant_ID": "DEMO-A1",
+     "Age": 20,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 1,
+     "Monthly_Income": 150000,
+     "Existing_EMI": 0,
+     "CIBIL_Score": 800,
+     "Loan_Type": "Home",
+     "Loan_Amount": 3000000,
+     "Loan_Tenure": 240,
+     "Collateral_Value": 5000000,
+     "Property_Area": "Urban"
+    },
+    "batch_id": null,
+    "result": {
+     "decision": "Rejected",
+     "confidence": 1.0,
+     "confidence_ci": null,
+     "reason": "R01 minimum age: applicant is 20, minimum is 21",
+     "source": "RULE",
+     "fired_rules": [
+      "R01"
+     ],
+     "audit_log_id": 1500,
+     "loan_id": "DEMO-HARD",
+     "applicant_id": "DEMO-A1",
+     "model_version": null,
+     "policy_version": "v1",
+     "leaf": null,
+     "leaf_support": null,
+     "invalid_fields": []
+    }
+   }
+  ]
+ },
+ "form_auto_approve": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Loan_ID": "DEMO-APPROVE",
+     "Applicant_ID": "DEMO-A2",
+     "Age": 35,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 10,
+     "Monthly_Income": 150000,
+     "Existing_EMI": 0,
+     "CIBIL_Score": 800,
+     "Loan_Type": "Home",
+     "Loan_Amount": 3000000,
+     "Loan_Tenure": 240,
+     "Collateral_Value": 5000000,
+     "Property_Area": "Urban"
+    },
+    "batch_id": null,
+    "result": {
+     "decision": "Approved",
+     "confidence": 0.9672006102212052,
+     "confidence_ci": [
+      0.9587272823713685,
+      0.9748641300988081
+     ],
+     "reason": "Approved (confidence 0.97, leaf of 1309 past applicants) because CIBIL 800 > 742 and FOIR 0.174 <= 0.458 and CIBIL 800 > 777.",
+     "source": "MODEL",
+     "fired_rules": [],
+     "audit_log_id": 1501,
+     "loan_id": "DEMO-APPROVE",
+     "applicant_id": "DEMO-A2",
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "leaf": 12,
+     "leaf_support": 1309,
+     "invalid_fields": []
+    }
+   }
+  ]
+ },
+ "form_auto_reject": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Loan_ID": "DEMO-REJECT",
+     "Applicant_ID": "DEMO-A3",
+     "Age": 35,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 10,
+     "Monthly_Income": 120000,
+     "Existing_EMI": 35000,
+     "CIBIL_Score": 700,
+     "Loan_Type": "Personal",
+     "Loan_Amount": 500000,
+     "Loan_Tenure": 36,
+     "Property_Area": "Urban"
+    },
+    "batch_id": null,
+    "result": {
+     "decision": "Rejected",
+     "confidence": 0.8542817679558011,
+     "confidence_ci": [
+      0.8387619892632074,
+      0.8692450302265415
+     ],
+     "reason": "Rejected (confidence 0.85, leaf of 1446 past applicants) because CIBIL 700 <= 742 and FOIR 0.429 > 0.390.",
+     "source": "MODEL",
+     "fired_rules": [],
+     "audit_log_id": 1502,
+     "loan_id": "DEMO-REJECT",
+     "applicant_id": "DEMO-A3",
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "leaf": 4,
+     "leaf_support": 1446,
+     "invalid_fields": []
+    }
+   }
+  ]
+ },
+ "form_soft_review": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Loan_ID": "DEMO-SOFT",
+     "Applicant_ID": "DEMO-A4",
+     "Age": 35,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 10,
+     "Monthly_Income": 150000,
+     "Existing_EMI": 0,
+     "CIBIL_Score": -1,
+     "Loan_Type": "Home",
+     "Loan_Amount": 3000000,
+     "Loan_Tenure": 240,
+     "Collateral_Value": 5000000,
+     "Property_Area": "Urban"
+    },
+    "batch_id": null,
+    "result": {
+     "decision": "Human Review",
+     "confidence": 0.6307692307692307,
+     "confidence_ci": [
+      0.6043048543722369,
+      0.6569066314133318
+     ],
+     "reason": "S01 new to credit: no bureau history (CIBIL -1); verify income and banking behaviour manually. Model recommendation: Approved (confidence 0.63, leaf of 908 past applicants) because CIBIL n/a (new to credit; median 735 used) <= 742 and FOIR 0.174 <= 0.390 and CIBIL n/a (new to credit; median 735 used) > 686 and work experience 10.0 yrs <= 12.9 yrs.",
+     "source": "RULE",
+     "fired_rules": [
+      "S01"
+     ],
+     "audit_log_id": 1503,
+     "loan_id": "DEMO-SOFT",
+     "applicant_id": "DEMO-A4",
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "leaf": 9,
+     "leaf_support": 908,
+     "invalid_fields": []
+    }
+   }
+  ]
+ },
+ "form_low_confidence": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Loan_ID": "DEMO-LOWCONF",
+     "Applicant_ID": "DEMO-A5",
+     "Age": 35,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 5,
+     "Monthly_Income": 80000,
+     "Existing_EMI": 0,
+     "CIBIL_Score": 720,
+     "Loan_Type": "Personal",
+     "Loan_Amount": 300000,
+     "Loan_Tenure": 36,
+     "Property_Area": "Urban"
+    },
+    "batch_id": null,
+    "result": {
+     "decision": "Human Review",
+     "confidence": 0.6307692307692307,
+     "confidence_ci": [
+      0.6043048543722369,
+      0.6569066314133318
+     ],
+     "reason": "Low model confidence (0.63; leaf support 908) - routed to human review. Model recommendation: Approved (confidence 0.63, leaf of 908 past applicants) because CIBIL 720 <= 742 and FOIR 0.124 <= 0.390 and CIBIL 720 > 686 and work experience 5.0 yrs <= 12.9 yrs.",
+     "source": "MODEL",
+     "fired_rules": [],
+     "audit_log_id": 1504,
+     "loan_id": "DEMO-LOWCONF",
+     "applicant_id": "DEMO-A5",
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "leaf": 9,
+     "leaf_support": 908,
+     "invalid_fields": []
+    }
+   }
+  ]
+ },
+ "form_lock": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Loan_ID": "DEMO-LOCK-2",
+     "Applicant_ID": "DEMO-A7",
+     "Collateral_ID": "DEMO-FLAT-101",
+     "Age": 35,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 10,
+     "Monthly_Income": 150000,
+     "Existing_EMI": 0,
+     "CIBIL_Score": 800,
+     "Loan_Type": "Home",
+     "Loan_Amount": 3000000,
+     "Loan_Tenure": 240,
+     "Collateral_Value": 5000000,
+     "Property_Area": "Urban"
+    },
+    "batch_id": null,
+    "result": {
+     "decision": "Human Review",
+     "confidence": 0.9672006102212052,
+     "confidence_ci": [
+      0.9587272823713685,
+      0.9748641300988081
+     ],
+     "reason": "Lock (FR-10): collateral DEMO-FLAT-101 already has an approved active loan DEMO-LOCK-1. Second approval blocked; sent to human review. Model recommendation: Approved (confidence 0.97, leaf of 1309 past applicants) because CIBIL 800 > 742 and FOIR 0.174 <= 0.458 and CIBIL 800 > 777.",
+     "source": "RULE",
+     "fired_rules": [],
+     "audit_log_id": 1505,
+     "loan_id": "DEMO-LOCK-2",
+     "applicant_id": "DEMO-A7",
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "leaf": 12,
+     "leaf_support": 1309,
+     "invalid_fields": []
+    }
+   }
+  ]
+ },
+ "json_max_amount_possible": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Age": 35,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 10,
+     "Monthly_Income": 60000,
+     "Existing_EMI": 0,
+     "CIBIL_Score": 800,
+     "Loan_Type": "Home",
+     "Loan_Amount": 6000000,
+     "Loan_Tenure": 240,
+     "Collateral_Value": 9000000,
+     "Property_Area": "Urban",
+     "Loan_ID": "LOG-FOIR",
+     "Applicant_ID": "LOG-A1"
+    },
+    "batch_id": null,
+    "result": {
+     "decision": "Rejected",
+     "confidence": 1.0,
+     "confidence_ci": null,
+     "reason": "R05 affordability: FOIR 87% exceeds the 55% limit for income Rs 60,000/month",
+     "source": "RULE",
+     "fired_rules": [
+      "R05"
+     ],
+     "audit_log_id": 1506,
+     "loan_id": "LOG-FOIR",
+     "applicant_id": "LOG-A1",
+     "model_version": null,
+     "policy_version": "v1",
+     "leaf": null,
+     "leaf_support": null,
+     "invalid_fields": []
+    }
+   },
+   {
+    "call": "find_max_approvable_amount",
+    "args": {
+     "Age": 35,
+     "Applicant_ID": "LOG-A1",
+     "CIBIL_Score": 800,
+     "Collateral_Value": 9000000,
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Existing_EMI": 0,
+     "Gender": "Female",
+     "Loan_Amount": 6000000,
+     "Loan_ID": "LOG-FOIR",
+     "Loan_Tenure": 240,
+     "Loan_Type": "Home",
+     "Marital_Status": "Married",
+     "Monthly_Income": 60000,
+     "Property_Area": "Urban",
+     "Work_Experience": 10
+    },
+    "result": {
+     "applicable": true,
+     "requested_amount": 6000000.0,
+     "tenure_months": 240.0,
+     "model_version": "dt_v1",
+     "policy_version": "v1",
+     "original_reason": "R05 affordability: FOIR 87% exceeds the 55% limit for income Rs 60,000/month",
+     "blocking_rule": null,
+     "candidates_checked": 10,
+     "lower_bound": 50000.0,
+     "upper_bound": 3456925.1947376435,
+     "max_amount_foir": 3456925.1947376435,
+     "max_amount_ltv": 7200000.0,
+     "possible": true,
+     "max_amount": 3160000,
+     "emi_at_max": 27423.214174350876,
+     "confidence_at_max": 0.9672006102212052,
+     "leaf_support_at_max": 1309,
+     "binding_limit": "MODEL",
+     "next_step_amount": 3170000,
+     "next_step_decision": "Human Review",
+     "tree_path_at_max": [
+      "CIBIL 800 > 742",
+      "FOIR 0.457 <= 0.458",
+      "CIBIL 800 > 777"
+     ],
+     "explanation": "This loan can be approved for up to \u20b931,60,000 (instead of \u20b960,00,000 requested); above that, the model (a higher amount falls in a leaf that is not auto-approved) decides."
+    }
+   }
+  ]
+ },
+ "json_default_malformed": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decide",
+    "args": {
+     "Age": 999,
+     "Gender": "Female",
+     "Marital_Status": "Married",
+     "Dependents": 1,
+     "Employment_Type": "Salaried",
+     "Work_Experience": 10,
+     "Monthly_Income": "abc",
+     "Existing_EMI": 0,
+     "CIBIL_Score": 800,
+     "Loan_Type": "Home",
+     "Loan_Amount": 3000000,
+     "Loan_Tenure": 240,
+     "Collateral_Value": 5000000,
+     "Property_Area": "Urban",
+     "Loan_ID": "DEMO-BAD",
+     "Applicant_ID": "DEMO-A8"
+    },
+    "batch_id": null,
+    "result": {
+     "decision": "Rejected",
+     "confidence": 1.0,
+     "confidence_ci": null,
+     "reason": "invalid input: Monthly_Income: could not parse 'abc'; invalid input: Age: 999 outside the valid range [18, 75] years",
+     "source": "RULE",
+     "fired_rules": [
+      "INPUT"
+     ],
+     "audit_log_id": 1507,
+     "loan_id": "DEMO-BAD",
+     "applicant_id": "DEMO-A8",
+     "model_version": null,
+     "policy_version": "v1",
+     "leaf": null,
+     "leaf_support": null,
+     "invalid_fields": [
+      "Monthly_Income",
+      "Age"
+     ]
+    }
+   }
+  ]
+ },
+ "officer_record_decision": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "list_reviews",
+    "args": [
+     "OPEN"
+    ],
+    "kwargs": {}
+   },
+   {
+    "call": "list_reviews",
+    "args": [
+     "CLOSED"
+    ],
+    "kwargs": {
+     "limit": 20
+    }
+   },
+   {
+    "call": "list_reviews",
+    "args": [
+     "OPEN"
+    ],
+    "kwargs": {}
+   },
+   {
+    "call": "complete_review",
+    "args": [
+     454,
+     "officer-1",
+     "Rejected",
+     "call-log note"
+    ]
+   },
+   {
+    "call": "list_reviews",
+    "args": [
+     "CLOSED"
+    ],
+    "kwargs": {
+     "limit": 20
+    }
+   }
+  ]
+ },
+ "audit_verify_chain": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "decision_history",
+    "args": [
+     "DEMO"
+    ],
+    "kwargs": {}
+   },
+   {
+    "call": "audit_event",
+    "args": [
+     1483
+    ],
+    "kwargs": {}
+   },
+   {
+    "call": "verify_chain",
+    "args": [],
+    "kwargs": {},
+    "result": {
+     "ok": true,
+     "checked": 1507,
+     "first_broken_seq": null
+    }
+   },
+   {
+    "call": "decision_history",
+    "args": [
+     "DEMO"
+    ],
+    "kwargs": {}
+   },
+   {
+    "call": "audit_event",
+    "args": [
+     1483
+    ],
+    "kwargs": {}
+   }
+  ]
+ },
+ "fairness_rerun": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "fairness_runs",
+    "args": [],
+    "kwargs": {}
+   },
+   {
+    "call": "fairness_rows",
+    "args": [
+     "rules_only-20261105T114249-fca61e"
+    ],
+    "kwargs": {}
+   },
+   {
+    "call": "fairness_rows",
+    "args": [
+     "model_only-20261105T114249-f08344"
+    ],
+    "kwargs": {}
+   },
+   {
+    "call": "fairness_rows",
+    "args": [
+     "pipeline-20261105T114249-013801"
+    ],
+    "kwargs": {}
+   },
+   {
+    "call": "fairness_rows",
+    "args": [
+     "breach_test-20261105T114249-a5c848"
+    ],
+    "kwargs": {}
+   },
+   {
+    "call": "disparate_impact.run",
+    "args": []
+   },
+   {
+    "call": "fairness_runs",
+    "args": [],
+    "kwargs": {}
+   },
+   {
+    "call": "fairness_rows",
+    "args": [
+     "rules_only-20261105T114249-fca61e"
+    ],
+    "kwargs": {}
+   },
+   {
+    "call": "fairness_rows",
+    "args": [
+     "model_only-20261105T114249-f08344"
+    ],
+    "kwargs": {}
+   },
+   {
+    "call": "fairness_rows",
+    "args": [
+     "pipeline-20261105T114249-013801"
+    ],
+    "kwargs": {}
+   },
+   {
+    "call": "fairness_rows",
+    "args": [
+     "breach_test-20261105T114249-a5c848"
+    ],
+    "kwargs": {}
+   }
+  ]
+ },
+ "stress_twin_default": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "simulate",
+    "args": {
+     "income_mean": 80000,
+     "income_cv": 0.15,
+     "income_day": 1,
+     "essentials": 35000,
+     "existing_emi": 5000,
+     "loan_amount": 1500000,
+     "annual_rate": 0.105,
+     "tenure_months": 60,
+     "proposed_emi": null,
+     "emi_due_day": 5,
+     "savings": 60000,
+     "extra": {}
+    }
+   }
+  ]
+ },
+ "render_4_Model_and_Policy": {
+  "ok": true,
+  "calls": [
+   {
+    "call": "versions",
+    "args": [],
+    "kwargs": {}
+   }
+  ]
+ },
+ "render_7_Model_Comparison": {
+  "ok": true,
+  "calls": []
+ }
+}

@@ -1,0 +1,66 @@
+# CogniLend UI theme (presentation only). Light and dark are both defined; users switch from the app menu.
+# The design-system CSS (app/assets/styles.css) uses matching tokens from app/ui/theme.py.
+[server]
+runOnSave = false
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+font = "sans-serif"
+baseRadius = "10px"
+showSidebarBorder = true
+
+[theme.light]
+primaryColor = "#1D4F91"
+backgroundColor = "#F5F7FA"
+secondaryBackgroundColor = "#EAEFF5"
+textColor = "#13213C"
+borderColor = "#D5DCE6"
+linkColor = "#1D4F91"
+greenColor = "#1E7B45"
+redColor = "#C0322B"
+orangeColor = "#B45309"
+blueColor = "#1D4F91"
+greenTextColor = "#136238"
+redTextColor = "#A1251F"
+orangeTextColor = "#8A4206"
+blueTextColor = "#1D4F91"
+greenBackgroundColor = "#E7F6EC"
+redBackgroundColor = "#FDECEA"
+orangeBackgroundColor = "#FEF4E2"
+blueBackgroundColor = "#E8F0FB"
+chartCategoricalColors = ["#1D4F91", "#1E7B45", "#B45309", "#6B4FA3", "#C0322B", "#0F7C8C"]
+
+[theme.light.sidebar]
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F5F7FA"
+
+[theme.dark]
+primaryColor = "#5B9BFF"
+backgroundColor = "#0E1525"
+secondaryBackgroundColor = "#1A2338"
+textColor = "#E6EBF3"
+borderColor = "#2A3650"
+linkColor = "#8DB8FF"
+greenColor = "#34C77B"
+redColor = "#F06A5F"
+orangeColor = "#F5A524"
+blueColor = "#5B9BFF"
+greenTextColor = "#6EE7A7"
+redTextColor = "#FF9C93"
+orangeTextColor = "#FFC768"
+blueTextColor = "#8DB8FF"
+greenBackgroundColor = "#10301F"
+redBackgroundColor = "#3A1715"
+orangeBackgroundColor = "#3A2A0E"
+blueBackgroundColor = "#1A2B4A"
+chartCategoricalColors = ["#5B9BFF", "#34C77B", "#F5A524", "#B39DFF", "#F06A5F", "#4CC9D9"]
+
+[theme.dark.sidebar]
+backgroundColor = "#111A2C"
+secondaryBackgroundColor = "#1A2338"
+
+[client]
+showSidebarNavigation = false   # the app draws its own sectioned menu (common.sidebar_nav)
+toolbarMode = "viewer"
