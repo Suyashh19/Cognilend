@@ -172,6 +172,15 @@ streamlit run app/streamlit_app.py
 
 Open <http://localhost:8501>.
 
+### Linux and macOS
+
+```bash
+chmod +x run.sh
+./run.sh
+```
+
+For development, run `make test` before submitting changes. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the recommended workflow.
+
 ### Other commands
 
 | Command | Purpose |
@@ -242,6 +251,14 @@ Key project targets (full table in the synopsis):
 | Reproducibility | Same input gives the same decision across 3 runs |
 
 Engineering-evidence scenarios include rule-versus-model conflict, rare profiles, missing or invalid fields, DB write failure and fairness-threshold breach. Generated reports are written to `artifacts/reports/`.
+
+### Understanding a decision
+
+- **Approved** means the policy rules passed and the constrained tree was sufficiently confident in approval.
+- **Rejected** means a hard policy rule fired, or the model rejected with sufficient confidence.
+- **Human Review** means a soft rule fired or the model did not have enough confidence for an automatic decision.
+- The **confidence interval** describes uncertainty in the model's approval estimate; it is not a guarantee of repayment.
+- The **Stress Twin** is advisory only and never changes the decision.
 
 ---
 

@@ -17,9 +17,12 @@ st.warning('Advisory panel only: it never changes the Approved / Rejected / Huma
 with st.form('stress_form'):
     a, b, d, e = st.columns(4)
     income = a.number_input('Monthly income mean (₹)', 0, 10_000_000, 80_000, step=1000)
-    cv = b.number_input('Income variability CV (σ/μ)', 0.0, 2.0, 0.15, step=0.05)
-    income_day = d.number_input('Income credit day', 1, 28, 1)
-    essentials = e.number_input('Essential expenses (₹/month)', 0, 10_000_000, 35_000, step=1000)
+    cv = b.number_input('Income variability CV (σ/μ)', 0.0, 2.0, 0.15, step=0.05,
+                        help='Relative month-to-month income variability used by the simulation.')
+    income_day = d.number_input('Income credit day', 1, 28, 1,
+                                help='Day on which income is assumed to arrive.')
+    essentials = e.number_input('Essential expenses (₹/month)', 0, 10_000_000, 35_000, step=1000,
+                                help='Recurring essential spending, excluding EMIs.')
     a, b, d, e = st.columns(4)
     existing = a.number_input('Existing EMIs (₹/month)', 0, 10_000_000, 5_000, step=500)
     amount = b.number_input('Proposed loan amount (₹)', 0, 1_000_000_000, 1_500_000, step=10000)
@@ -27,7 +30,8 @@ with st.form('stress_form'):
     tenure = e.number_input('Tenure (months)', 1, 360, 60)
     a, b = st.columns(2)
     due = a.number_input('EMI due day', 1, 28, 5)
-    savings = b.number_input('Liquid savings (₹)', 0, 1_000_000_000, 60_000, step=5000)
+    savings = b.number_input('Liquid savings (₹)', 0, 1_000_000_000, 60_000, step=5000,
+                             help='Cash buffer available at the start of the simulation.')
     go = st.form_submit_button('Run stress test', type='primary')
 
 if go or 'stress' not in st.session_state:

@@ -44,12 +44,15 @@ def decision_card(d: dict):
     st.markdown(f'## :{colour}[{d["decision"]}]')
     c1, c2, c3, c4 = st.columns(4)
     conf = d.get('confidence')
-    c1.metric('Confidence', f'{conf:.2f}' if conf is not None else '-')
+    c1.metric('Confidence', f'{conf:.2f}' if conf is not None else '-',
+              help='Estimated approval probability. This is not a guarantee of repayment.')
     ci = d.get('confidence_ci')
-    c2.metric('90% credible interval', f'{ci[0]:.2f} - {ci[1]:.2f}' if ci else 'rule decision')
+    c2.metric('90% credible interval', f'{ci[0]:.2f} - {ci[1]:.2f}' if ci else 'rule decision',
+              help='Bayesian uncertainty range around the model estimate. Rule-only decisions have no model interval.')
     c3.metric('Audit-log ID', d['audit_log_id'] if d.get('audit_log_id') is not None else 'not stored')
     c4.metric('Decided by', d['source'])
     st.markdown('**Reason**')
+    st.caption('The explanation below shows the policy or model evidence used for this result.')
     st.info(d['reason'])
     st.caption(f'Loan {d["loan_id"]} · applicant {d["applicant_id"]} · policy {d["policy_version"]} · '
                f'model {d.get("model_version") or "not consulted"} · leaf support {d.get("leaf_support") or "-"}')

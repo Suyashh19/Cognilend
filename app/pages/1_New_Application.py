@@ -11,6 +11,8 @@ from cognilend import demo  # noqa: E402
 from cognilend.data import contract  # noqa: E402
 
 common.setup('New Application')
+st.caption('Submit an application to see the policy checks, model explanation, confidence, and audit record. '
+           'Gender and marital status are collected for fairness auditing only; they are not model inputs.')
 F = contract.FIELDS
 
 name = st.query_params.get('demo')
