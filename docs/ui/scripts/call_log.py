@@ -20,7 +20,7 @@ from pathlib import Path
 from streamlit.testing.v1 import AppTest
 
 from cognilend import demo
-from cognilend.addons import max_amount
+from cognilend.max_amount import search as max_amount
 from cognilend.db.repository import Repository
 from cognilend.fairness import disparate_impact
 from cognilend.pipeline import DecisionPipeline
@@ -89,8 +89,18 @@ def install_spies():
     simulator.simulate = simulate
 
 
+# new page file (app/views/) -> old page file (app/pages/ in git main), so both UIs can be driven by one name
+OLD_PAGE = {'new_application.py': '1_New_Application.py', 'review_queue.py': '2_Officer_Review_Queue.py',
+            'audit_explorer.py': '3_Audit_Explorer.py', 'model_and_policy.py': '4_Model_and_Policy.py',
+            'fairness.py': '5_Fairness_Dashboard.py', 'stress_twin.py': '6_Stress_Twin.py',
+            'model_comparison.py': '7_Model_Comparison.py'}
+
+
 def page(app_dir: Path, name: str, **qp) -> AppTest:
-    at = AppTest.from_file(str(app_dir / 'pages' / name), default_timeout=300)
+    path = app_dir / 'views' / name
+    if not path.exists():                      # old UI layout (git main): app/pages/<n>_<Name>.py
+        path = app_dir / 'pages' / OLD_PAGE[name]
+    at = AppTest.from_file(str(path), default_timeout=300)
     for k, v in qp.items():
         at.query_params[k] = v
     return at.run()
@@ -162,7 +172,7 @@ def main():
 
     for name in demo.CASES:                                    # ?demo= deep links
         def run_demo(name=name):
-            at = page(app_dir, '1_New_Application.py', demo=name)
+            at = page(app_dir, 'new_application.py', demo=name)
             assert not at.exception, [e.value for e in at.exception]
             if at.session_state['result']['decision'] == 'Rejected':
                 button(at, 'See maximum approvable amount').click().run()
@@ -170,7 +180,7 @@ def main():
         story(f'demo_{name}', run_demo)
 
     def form_default():
-        at = page(app_dir, '1_New_Application.py')
+        at = page(app_dir, 'new_application.py')
         if mode == 'old':
             button(at, 'Submit application').click().run()
         else:
@@ -180,13 +190,13 @@ def main():
 
     for name in ('hard_reject', 'auto_approve', 'auto_reject', 'soft_review', 'low_confidence', 'lock'):
         def run_form(name=name):
-            at = page(app_dir, '1_New_Application.py')
+            at = page(app_dir, 'new_application.py')
             form_story(at, mode, demo.clean(demo.CASES[name][1][-1]))
             assert not at.exception, [e.value for e in at.exception]
         story(f'form_{name}', run_form)
 
     def json_possible():
-        at = page(app_dir, '1_New_Application.py')
+        at = page(app_dir, 'new_application.py')
         at.text_area[0].input(json.dumps(FOIR_JSON))
         button(at, 'Submit JSON').click().run()
         button(at, 'See maximum approvable amount').click().run()
@@ -194,13 +204,13 @@ def main():
     story('json_max_amount_possible', json_possible)
 
     def json_malformed():
-        at = page(app_dir, '1_New_Application.py')
+        at = page(app_dir, 'new_application.py')
         button(at, 'Submit JSON').click().run()                # the default JSON is the malformed demo
         assert not at.exception, [e.value for e in at.exception]
     story('json_default_malformed', json_malformed)
 
     def officer():
-        at = page(app_dir, '2_Officer_Review_Queue.py')
+        at = page(app_dir, 'review_queue.py')
         at.text_area[0].input('call-log note')
         at.radio[0].set_value('Rejected')
         at.button[0].click().run()
@@ -208,23 +218,23 @@ def main():
     story('officer_record_decision', officer)
 
     def audit():
-        at = page(app_dir, '3_Audit_Explorer.py')
+        at = page(app_dir, 'audit_explorer.py')
         button(at, 'Verify chain').click().run()
         assert not at.exception, [e.value for e in at.exception]
     story('audit_verify_chain', audit)
 
     def fairness():
-        at = page(app_dir, '5_Fairness_Dashboard.py')
+        at = page(app_dir, 'fairness.py')
         button(at, 'Rerun fairness audit').click().run()
         assert not at.exception, [e.value for e in at.exception]
     story('fairness_rerun', fairness)
 
     def stress():
-        at = page(app_dir, '6_Stress_Twin.py')
+        at = page(app_dir, 'stress_twin.py')
         assert not at.exception, [e.value for e in at.exception]
     story('stress_twin_default', stress)
 
-    for p in ('4_Model_and_Policy.py', '7_Model_Comparison.py'):
+    for p in ('model_and_policy.py', 'model_comparison.py'):
         def render(p=p):
             at = page(app_dir, p)
             assert not at.exception, [e.value for e in at.exception]

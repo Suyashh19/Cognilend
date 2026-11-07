@@ -5,7 +5,7 @@ Two kinds of helper:
   *_html(...)   return an HTML string (render with st.html, or combine several into one block);
   the others    render directly.
 Helpers that render through st.html add no markdown / metric / alert elements, so they can be used on screens
-whose element list is compared against the baseline (tests/addons/test_ui_panel.py) without changing it.
+whose element list is compared against the baseline (tests/max_amount/test_ui_panel.py) without changing it.
 """
 from __future__ import annotations
 
@@ -47,11 +47,6 @@ def card(key: str | None = None, border: bool = True):
         yield c
 
 
-def card_html(title: str, body: str, kind: str | None = None) -> str:
-    cls = f' {kind}' if kind else ''
-    return f'<div class="cl-card{cls}"><h4>{esc(title)}</h4><p>{body}</p></div>'
-
-
 # ---------------------------------------------------------------------------------------------------------
 # status
 # ---------------------------------------------------------------------------------------------------------
@@ -61,10 +56,6 @@ def status_badge_html(outcome, label: str | None = None) -> str:
     text = label or KIND_WORD.get(k) or str(outcome or '—')
     return (f'<span class="cl-badge {k}"><span class="cl-ico" aria-hidden="true">{KIND_ICON[k]}</span>'
             f'{esc(text)}</span>')
-
-
-def status_badge(outcome, label: str | None = None) -> None:
-    st.html(status_badge_html(outcome, label))
 
 
 def rule_chip_html(rule_id: str, passed: bool | None, label: str | None = None, rule_type: str | None = None) -> str:
@@ -79,10 +70,6 @@ def rule_chip_html(rule_id: str, passed: bool | None, label: str | None = None, 
     text = f'{rule_id} {label}' if label else rule_id
     return (f'<span class="cl-chip {cls}" title="{esc(text)}: {word}"><span aria-hidden="true">{ico}</span>'
             f'{esc(text)}<span class="cl-sr-only"> {word}</span></span>')
-
-
-def rule_chip(rule_id: str, passed: bool | None, label: str | None = None, rule_type: str | None = None) -> None:
-    st.html(rule_chip_html(rule_id, passed, label, rule_type))
 
 
 # ---------------------------------------------------------------------------------------------------------
@@ -138,13 +125,6 @@ def confidence_meter(value: float | None, interval=None, label: str = 'Confidenc
 # ---------------------------------------------------------------------------------------------------------
 # explanations
 # ---------------------------------------------------------------------------------------------------------
-def reason_list(reasons: list[str] | str) -> None:
-    """Reasons as a readable bullet list (markdown)."""
-    items = [reasons] if isinstance(reasons, str) else list(reasons or [])
-    if items:
-        st.markdown('\n'.join(f'- {r}' for r in items))
-
-
 def reason_list_html(reasons: list[str] | str) -> str:
     items = [reasons] if isinstance(reasons, str) else list(reasons or [])
     return '<ul>' + ''.join(f'<li>{esc(r)}</li>' for r in items) + '</ul>' if items else ''

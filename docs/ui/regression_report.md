@@ -7,7 +7,7 @@ same seeded DB copy.
 |---|---|---|---|
 | 1 | sha256 of every file outside `app/`, `.streamlit/` (427 source files) identical to U0 | **PASS** (0 changed, 0 missing, 0 added; only the runtime SQLite DB differs, which the app and tests write by design) | `regression/backend_hashes_compare.txt` |
 | 2 | Full test suite = baseline | **PASS**: plain `pytest` gives the same single collection error as before (`tests/test_counterfactual.py` imports the non-existent `cognilend.explain`; pre-existing, backend/tests out of scope). With `--continue-on-collection-errors`: **361 passed, 1 error** before and after, and the per-test outcome list is identical | `baseline/pytest_before*.txt`, `regression/pytest_after*.txt` |
-| 3 | `decide_many` on the test set byte-identical | **PASS**: sha256 `452273dea51a2b56959aa204812e694544e5a4e900260d0ced627cbbcf330a9c` both (`cmp`: identical) | `baseline/decisions_before.csv`, `regression/decisions_after.csv` |
+| 3 | `decide_many` on the test set byte-identical | **PASS**: sha256 `452273dea51a2b56959aa204812e694544e5a4e900260d0ced627cbbcf330a9c` both (`cmp`: identical) | `reports/baseline/decisions_before.csv`, `regression/decisions_after.csv` |
 | 4a | Every demo case through the new UI: decision, confidence, reason, fired rules, audit ID | **PASS**: identical to the old UI in the same run, and the decisions + audit IDs are identical to the U0 baseline log (e.g. auto-approve Approved 0.967 audit 1492; hard reject Rejected 1.00 audit 1491) | `regression/calls/diff.md`, `baseline/calls_before.json`, `regression/calls/new.json` |
 | 4b | Audit chain status | **PASS**: verify_chain OK in both (`audit_verify_chain` story) | `regression/calls/diff.md` |
 | 4c | Max-amount result | **PASS**: possible case ₹31,60,000 (same explanation, EMI, binding limit); auto-reject "No lower amount can be approved" | `regression/calls/diff.md`, `after/screens/max_amount_*.png` |
@@ -29,4 +29,4 @@ same seeded DB copy.
   `st.markdown`); a deep link as the first request after server start is served in legacy `pages/` mode (the menu is
   drawn by each page).
 - Backend ideas not implemented: `backend_wishlist.md`.
-- `requirements-ui.txt`: `plotly==7.1.0`. Install with `pip install -r requirements.txt -r requirements-ui.txt`.
+- `plotly==7.1.0` (was `requirements-ui.txt`) is now part of `requirements.txt`: `pip install -r requirements.txt`.

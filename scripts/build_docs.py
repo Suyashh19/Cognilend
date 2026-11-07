@@ -370,7 +370,7 @@ def traceability(a) -> str:
     fair = a['fair']
     pf = fair[(fair['mode'] == 'pipeline') & ~fair['insufficient']]
     rows = [
-        ('FR-1', 'Accept applicant, financial, credit and loan inputs', 'data/contract.py, app/pages/1_New_Application.py',
+        ('FR-1', 'Accept applicant, financial, credit and loan inputs', 'data/contract.py, app/views/new_application.py',
          ['test_clean_row_is_accepted', 'test_transform_applicant_single_dict'], 'contract: 18 fields'),
         ('FR-2', 'Apply policy rules before the ML model', 'pipeline.py, rules/engine.py',
          ['test_hard_reject_never_calls_ml', 'test_hard_reject_logged_without_model'], 'model never called on REJECT'),

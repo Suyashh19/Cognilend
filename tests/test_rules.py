@@ -1,10 +1,7 @@
-import math
-
-import numpy as np
 import pandas as pd
 import pytest
 
-from cognilend import config, pipeline
+from cognilend import pipeline
 from cognilend.data import contract, preprocess
 from cognilend.ml import tree
 from cognilend.rules import engine

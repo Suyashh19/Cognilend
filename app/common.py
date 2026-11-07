@@ -84,13 +84,13 @@ def appbar() -> None:
 
 NAV = [  # (section, label, page file relative to app/, icon). Same URLs as before: /New_Application, ...
     ('Apply', 'Home', 'views/home.py', ':material/home:'),
-    ('Apply', 'New Application', 'pages/1_New_Application.py', ':material/edit_document:'),
-    ('Operations', 'Review Queue', 'pages/2_Officer_Review_Queue.py', ':material/person_search:'),
-    ('Operations', 'Audit Explorer', 'pages/3_Audit_Explorer.py', ':material/fact_check:'),
-    ('Governance', 'Model & Policy', 'pages/4_Model_and_Policy.py', ':material/account_tree:'),
-    ('Governance', 'Fairness', 'pages/5_Fairness_Dashboard.py', ':material/balance:'),
-    ('Governance', 'Model Comparison', 'pages/7_Model_Comparison.py', ':material/leaderboard:'),
-    ('Advisory', 'Stress Twin', 'pages/6_Stress_Twin.py', ':material/monitoring:'),
+    ('Apply', 'New Application', 'views/new_application.py', ':material/edit_document:'),
+    ('Operations', 'Review Queue', 'views/review_queue.py', ':material/person_search:'),
+    ('Operations', 'Audit Explorer', 'views/audit_explorer.py', ':material/fact_check:'),
+    ('Governance', 'Model & Policy', 'views/model_and_policy.py', ':material/account_tree:'),
+    ('Governance', 'Fairness', 'views/fairness.py', ':material/balance:'),
+    ('Governance', 'Model Comparison', 'views/model_comparison.py', ':material/leaderboard:'),
+    ('Advisory', 'Stress Twin', 'views/stress_twin.py', ':material/monitoring:'),
 ]
 
 
@@ -147,21 +147,6 @@ def setup(title: str, subtitle: str | None = None):
 # ---------------------------------------------------------------------------------------------------------
 # decision result
 # ---------------------------------------------------------------------------------------------------------
-def rule_line(e: dict) -> str:
-    """One rule evaluation as coloured text: red = HARD fired, orange = SOFT fired, green = passed."""
-    def fmt_(x):
-        if isinstance(x, float):
-            return f'{x:,.0f}' if abs(x) >= 1000 else f'{x:.4g}'
-        return str(x)
-    v = '' if e.get('value') is None else f' (value {fmt_(e["value"])}, threshold {fmt_(e.get("threshold"))})'
-    if e['status'] == 'fired':
-        colour = 'red' if e['type'] == 'HARD' else 'orange'
-        return f':{colour}[**✗ {e["rule_id"]} {e["name"]}: fired ({e["type"]})**]{v}'
-    if e['status'] == 'passed':
-        return f':green[✓ {e["rule_id"]} {e["name"]}: passed]{v}'
-    return f':gray[– {e["rule_id"]} {e["name"]}: {e["status"].replace("_", " ")}]'
-
-
 @st.cache_data(show_spinner=False, max_entries=64)
 def tree_png(nodes: tuple, leaf, highlight: bool, figsize=(13, 5.5)) -> bytes:
     """The existing tree figure (cognilend.ml.tree_plot.draw_tree), rendered once per path to PNG bytes."""
@@ -255,7 +240,7 @@ th{{background:#EEF1F5}}.reason{{background:#E8F0FB;border:1px solid #B5CBEA;pad
 def new_application_link() -> None:
     """'Start a new application': in-app link that clears the result and the form (?new=1)."""
     try:
-        st.page_link('pages/1_New_Application.py', label='Start a new application', icon=':material/add:',
+        st.page_link('views/new_application.py', label='Start a new application', icon=':material/add:',
                      query_params={'new': '1'}, width='stretch')
     except Exception:  # noqa: BLE001 - page registry unavailable (page run on its own, e.g. headless tests)
         st.html('<a class="cl-copy" style="display:inline-block;text-decoration:none" href="New_Application?new=1" '

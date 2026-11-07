@@ -14,7 +14,7 @@ from sqlalchemy import func, select
 from cognilend import config
 from cognilend.data import contract, preprocess
 from cognilend.db.models import AuditLog, Decision, RuleResult
-from cognilend.db.repository import Repository, make_engine
+from cognilend.db.repository import Repository
 from cognilend.pipeline import REQUIRED_KEYS, DecisionPipeline
 
 BATCH = 'test-eval'

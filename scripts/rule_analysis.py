@@ -9,7 +9,6 @@ document come from this script; rationale and source text come from config/polic
 import json
 import sys
 
-import numpy as np
 import pandas as pd
 
 from cognilend import config

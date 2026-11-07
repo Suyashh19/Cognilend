@@ -7,7 +7,7 @@ from streamlit.testing.v1 import AppTest
 from cognilend import demo
 
 APP = Path(__file__).resolve().parents[1] / 'app'
-PAGES = sorted((APP / 'pages').glob('*.py'))
+PAGES = sorted(p for p in (APP / 'views').glob('*.py') if p.stem not in ('home', 'style_guide'))  # home = app shell
 
 
 def _text(at) -> str:
@@ -26,7 +26,7 @@ def test_every_page_renders_without_exception(page):
 @pytest.mark.parametrize('name', list(demo.CASES))
 def test_demo_case_shows_expected_decision_card(name):
     title, _, expected, source = demo.CASES[name]
-    at = AppTest.from_file(str(APP / 'pages' / '1_New_Application.py'), default_timeout=180)
+    at = AppTest.from_file(str(APP / 'views' / 'new_application.py'), default_timeout=180)
     at.query_params['demo'] = name
     at.run()
     assert not at.exception, [e.value for e in at.exception]
@@ -45,7 +45,7 @@ def test_demo_case_shows_expected_decision_card(name):
 
 
 def test_officer_review_records_human_decision():
-    at = AppTest.from_file(str(APP / 'pages' / '2_Officer_Review_Queue.py'), default_timeout=180).run()
+    at = AppTest.from_file(str(APP / 'views' / 'review_queue.py'), default_timeout=180).run()
     assert not at.exception
     at.text_area[0].input('documents verified in UI test')
     at.radio[0].set_value('Rejected')
@@ -55,7 +55,7 @@ def test_officer_review_records_human_decision():
 
 
 def test_audit_explorer_verify_chain_button():
-    at = AppTest.from_file(str(APP / 'pages' / '3_Audit_Explorer.py'), default_timeout=180).run()
+    at = AppTest.from_file(str(APP / 'views' / 'audit_explorer.py'), default_timeout=180).run()
     at.button[0].click().run()
     assert not at.exception
     assert any('Audit chain OK' in s.value for s in at.success)

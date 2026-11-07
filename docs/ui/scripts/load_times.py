@@ -17,15 +17,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 PAGES = [('Home', 'streamlit_app.py', 'views/home.py', {}),
-         ('New Application', 'pages/1_New_Application.py', 'pages/1_New_Application.py', {}),
-         ('New Application (demo result)', 'pages/1_New_Application.py', 'pages/1_New_Application.py',
+         ('New Application', 'pages/1_New_Application.py', 'views/new_application.py', {}),
+         ('New Application (demo result)', 'pages/1_New_Application.py', 'views/new_application.py',
           {'demo': 'auto_approve'}),
-         ('Review Queue', 'pages/2_Officer_Review_Queue.py', 'pages/2_Officer_Review_Queue.py', {}),
-         ('Audit Explorer', 'pages/3_Audit_Explorer.py', 'pages/3_Audit_Explorer.py', {'q': 'DEMO-LOCK'}),
-         ('Model & Policy', 'pages/4_Model_and_Policy.py', 'pages/4_Model_and_Policy.py', {}),
-         ('Fairness', 'pages/5_Fairness_Dashboard.py', 'pages/5_Fairness_Dashboard.py', {}),
-         ('Stress Twin', 'pages/6_Stress_Twin.py', 'pages/6_Stress_Twin.py', {}),
-         ('Model Comparison', 'pages/7_Model_Comparison.py', 'pages/7_Model_Comparison.py', {})]
+         ('Review Queue', 'pages/2_Officer_Review_Queue.py', 'views/review_queue.py', {}),
+         ('Audit Explorer', 'pages/3_Audit_Explorer.py', 'views/audit_explorer.py', {'q': 'DEMO-LOCK'}),
+         ('Model & Policy', 'pages/4_Model_and_Policy.py', 'views/model_and_policy.py', {}),
+         ('Fairness', 'pages/5_Fairness_Dashboard.py', 'views/fairness.py', {}),
+         ('Stress Twin', 'pages/6_Stress_Twin.py', 'views/stress_twin.py', {}),
+         ('Model Comparison', 'pages/7_Model_Comparison.py', 'views/model_comparison.py', {})]
 
 
 def timed(app_dir: Path, rel: str, qp: dict) -> float:

@@ -24,7 +24,7 @@ from cognilend import demo  # noqa: E402
 from cognilend.pipeline import DecisionPipeline  # noqa: E402
 from cognilend.rules import engine  # noqa: E402
 
-PAGE = str(ROOT / 'app' / 'pages' / '1_New_Application.py')
+PAGE = str(ROOT / 'app' / 'views' / 'new_application.py')
 CALLS = []
 _orig = DecisionPipeline.decide
 

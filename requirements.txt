@@ -1,4 +1,7 @@
 # Resolved 2026-10-15 on CPython 3.14.3 (Windows x64). pandas 3.x requires Python >= 3.11.
+
+# pip install -r requirements.txt
+
 numpy==2.5.4
 pandas==3.0.6
 scikit-learn==1.9.1
@@ -9,11 +12,12 @@ PyYAML==6.0.3
 SQLAlchemy==2.1.4
 streamlit==1.66.0
 matplotlib==3.11.2
-graphviz==0.21
-dtreeviz==2.3.2
 pyarrow==26.0.0
 scipy==1.18.1
 pytest==9.1.1
 pytest-cov==7.1.0
 playwright==1.64.0      # screenshots only (scripts/screenshots.py), uses the installed Chrome or Edge
 coverage==7.16.2
+
+# UI charts (formerly requirements-ui.txt)
+plotly==7.1.0  # charts on Model & Policy, Fairness and Model Comparison

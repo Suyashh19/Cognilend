@@ -73,10 +73,7 @@ Numbers are never taken from this page; they come from `facts.json`.
 | File | What it is |
 |---|---|
 | `synthetic/loans_raw.csv` | The raw (dirty) synthetic dataset the pipeline uses (path in `settings.yaml`). |
-| `synthetic/loan_applications_raw.csv` | Another raw synthetic file (different hash); not on the configured path. |
-| `synthetic/loan_applications_final.csv` | A cleaned export (9,847 rows); not read by the pipeline. |
-| `synthetic/team_reference/*` | Team's own cleaned / semi-processed files and column-meaning document (reference only). |
-| `raw/loan` | 10,000-row CSV with `Loan_Status` (dated 15 Oct). **Not read by any code**; not the Kaggle Loan.csv. |
+| `raw/` | Empty; `Loan.csv` goes here when supplied. The team's earlier datasets live in `archive/preprocessing/dataset/`. |
 
 ## 5. Scripts — `scripts/`
 
@@ -152,10 +149,10 @@ Numbers are never taken from this page; they come from `facts.json`.
 
 `final_report.md`, `presentation.md`, `traceability.md`, `changes_from_synopsis.md`, `data_decision.md`, `dataset_report.md`, `rule_justification.md`, `synopsis_references.md`, `audit_queries.sql` (11 queries), `weekly_tracker_october.md`, `feature_max_approvable_amount.md`, `progress/step_00…12.md`.
 
-## 9. Legacy — `notebooks/legacy/`
+## 9. Legacy — `archive/model_training/`
 
-The team's original notebooks and XGBoost prototype (`loan_engine.py`, `train.py`, `test_scenarios.py`). Kept for history; not used by the pipeline.
+The team's original notebooks and XGBoost prototype (`loan_engine.py`, `train.py`, `test_scenarios.py`). Kept for history; not used by the pipeline. (The duplicate `notebooks/legacy/` copy was removed.)
 
 ## 10. Not part of the project
 
-`p.out` (a cProfile dump), `.claude/`, `.agents/`.
+`.claude/`, `.agents/`.

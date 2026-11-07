@@ -10,7 +10,7 @@ test:
 train:
 	$(PY) -m cognilend.data.preprocess && $(PY) -m cognilend.ml.tree
 reports:
-	$(PY) -m cognilend.ml.benchmark && $(PY) -m cognilend.ml.confidence && $(PY) -m cognilend.ml.explain && $(PY) scripts/rule_analysis.py \n		&& $(PY) scripts/evaluate_pipeline.py && $(PY) scripts/reproducibility.py && $(PY) -m cognilend.fairness.disparate_impact
+	$(PY) -m cognilend.ml.benchmark && $(PY) -m cognilend.ml.confidence && $(PY) -m cognilend.ml.explain && $(PY) scripts/rule_analysis.py && $(PY) scripts/evaluate_pipeline.py && $(PY) scripts/reproducibility.py && $(PY) -m cognilend.fairness.disparate_impact
 seed:
 	$(PY) scripts/seed_demo.py
 app:

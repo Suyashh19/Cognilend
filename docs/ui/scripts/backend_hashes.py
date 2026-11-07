@@ -21,7 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 EXCLUDE_TOP = {'app', '.streamlit', '.git', '.venv', 'requirements-ui.txt'}
 EXCLUDE_PARTS = {'__pycache__', '.pytest_cache', '.ipynb_checkpoints'}
-RUNTIME_PREFIXES = ('data/processed/', 'artifacts/fallback/', 'artifacts/reports/', 'reports/screens/')
+RUNTIME_PREFIXES = ('data/processed/', 'artifacts/fallback/', 'artifacts/reports/', 'evidence/max_amount/screens/')
 RUNTIME_SUFFIXES = ('.db', '.db-journal', '.db-wal', '.db-shm')
 # Model artefacts live in artifacts/reports too (metrics json); they are written only by training, never by the UI.
 TRAINED = ('artifacts/models/', 'artifacts/encoders/')

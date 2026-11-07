@@ -47,15 +47,15 @@ st.html('<h3 style="margin:18px 0 6px 0">Get started</h3>')
 a, b, c = st.columns(3)
 with a:
     with st.container(border=True):
-        st.page_link('pages/1_New_Application.py', label='New Application', icon=':material/edit_document:')
+        st.page_link('views/new_application.py', label='New Application', icon=':material/edit_document:')
         st.caption('Enter an application step by step and get an explained decision.')
 with b:
     with st.container(border=True):
-        st.page_link('pages/2_Officer_Review_Queue.py', label='Review Queue', icon=':material/person_search:')
+        st.page_link('views/review_queue.py', label='Review Queue', icon=':material/person_search:')
         st.caption('Cases waiting for a loan officer\'s Human Review decision.')
 with c:
     with st.container(border=True):
-        st.page_link('pages/3_Audit_Explorer.py', label='Audit Explorer', icon=':material/fact_check:')
+        st.page_link('views/audit_explorer.py', label='Audit Explorer', icon=':material/fact_check:')
         st.caption('Search decisions and verify the audit chain.')
 
 st.html('<h3 style="margin:18px 0 6px 0">Demo cases</h3><p style="margin:0 0 8px 0;color:var(--cl-muted)">'
@@ -63,7 +63,7 @@ st.html('<h3 style="margin:18px 0 6px 0">Demo cases</h3><p style="margin:0 0 8px
 cols = st.columns(2)
 for i, (name, (title, _, expected, _src)) in enumerate(demo.CASES.items()):
     with cols[i % 2]:
-        st.page_link('pages/1_New_Application.py', label=title, query_params={'demo': name},
+        st.page_link('views/new_application.py', label=title, query_params={'demo': name},
                      icon={'Approved': ':material/check_circle:', 'Rejected': ':material/cancel:'}.get(
                          expected, ':material/person_search:'))
 st.markdown("""
