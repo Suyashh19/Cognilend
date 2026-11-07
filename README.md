@@ -186,6 +186,7 @@ continues where it stopped. Nothing is installed outside the project folder.
 | Message or problem | Fix |
 |---|---|
 | `Python 3.11 or newer is required` | Install Python 3.11+ (tick *Add python.exe to PATH*), then launch again |
+| Windows "Open File - Security Warning … Unknown Publisher" when starting `RUN_ME.bat` | Appears only for files from a downloaded ZIP (not after `git clone`). The script is plain text you can read in Notepad, so click **Run** (untick *Always ask* to stop the prompt). To avoid it: before extracting, right-click the ZIP → **Properties** → tick **Unblock** → **OK**; or, for an already extracted folder, run `Get-ChildItem -Recurse <folder> \| Unblock-File` in PowerShell |
 | `./run.sh: Permission denied` | Run `bash run.sh` instead |
 | Port 8501 already in use | Close the other window or app using it, then launch again |
 | `Setup failed` (Windows) or `run.sh` stops with an error | Read the error message, fix it, then launch again; setup resumes |
